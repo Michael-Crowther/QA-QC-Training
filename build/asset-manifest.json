@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "./static/css/main.e416dbc8.css",
+    "main.js": "./static/js/main.fd5542d8.js",
+    "static/media/Philosopher-Regular.ttf": "./static/media/Philosopher-Regular.8c8d18ba8a991d3045f9.ttf",
+    "static/media/biblePic.jpg": "./static/media/biblePic.3d8301e0f0e76e211d1f.jpg",
+    "static/media/Bloom Monday Demo.otf": "./static/media/Bloom Monday Demo.a590e4fb8fdd0ffccf8d.otf",
+    "static/media/Ancient Medium.ttf": "./static/media/Ancient Medium.a59ed847ec519bfb87a7.ttf",
+    "static/media/Seagram tfb.ttf": "./static/media/Seagram tfb.7efd43ff5d6bc4dece9e.ttf",
+    "index.html": "./index.html",
+    "main.e416dbc8.css.map": "./static/css/main.e416dbc8.css.map",
+    "main.fd5542d8.js.map": "./static/js/main.fd5542d8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e416dbc8.css",
+    "static/js/main.fd5542d8.js"
+  ]
+}
