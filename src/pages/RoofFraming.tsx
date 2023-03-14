@@ -1,10 +1,7 @@
-import React, { useState, lazy } from "react";
 import { Link } from "react-router-dom";
 
 
 const RoofFraming: React.FC = () => {
-    const [todo, setTodo] = useState<string>("");
-
     return(
         <div className="mainContent">
             <Link to="/" style = {{textDecoration: 'none', color: 'white'}}>

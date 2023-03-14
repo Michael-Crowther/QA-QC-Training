@@ -20,6 +20,7 @@ import React from "react";
 const App: React.FC = () => {
   
   const [search, setSearch] = useState<string>("");
+  // eslint-disable-next-line
   const [initialSearchTerms, setInitialSearchTerms] = useState<string[]>([]);
   const [showLink, setShowLink] = useState(true);
   const navigate = useNavigate();

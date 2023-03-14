@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const General: React.FC = () => {
-  const [todo, setTodo] = useState<string>("");
-
   return (
     <div className="mainContent">
       <Link to="/" className="homeLink">
