@@ -12,7 +12,7 @@ const ErrorRatePolicy: React.FC = () => {
             <h1 className="pageHeader">Error Rate Policy</h1>
             <div className="googleDocEmbedContainer">
                 <iframe className = "doc"
-                src="https://docs.google.com/document/d/e/2PACX-1vRsAQGxm4cfmJndek_huCHpqx0cDOHZretdYbqcV2G6lOE8Hrtb8w9dqGQlQCEKmaNSNOTYczeVfGDS/pub?embedded=true&wmode=transparent"
+                //src="https://docs.google.com/document/d/e/2PACX-1vRsAQGxm4cfmJndek_huCHpqx0cDOHZretdYbqcV2G6lOE8Hrtb8w9dqGQlQCEKmaNSNOTYczeVfGDS/pub?embedded=true&wmode=transparent"
                 width="1000"
                 height="1000"
                 title="Google Doc Embed"
