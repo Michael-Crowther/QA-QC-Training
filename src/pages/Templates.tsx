@@ -12,7 +12,7 @@ const Templates: React.FC = () => {
             <h1 className="pageHeader">Templates</h1>
             <div className="googleDocEmbedContainer">
                 <iframe className = "doc"
-                //src="https://docs.google.com/document/d/e/2PACX-1vRxzhUeSxSqWesUzCaTzRrqQNu9gV5Lx8GMKSBNdUn5OnMm56Gp086mm_lS2qvR8fmovcyevDlbi6z0/pub?embedded=true&wmode=transparent"
+                src="https://docs.google.com/document/d/e/2PACX-1vRxzhUeSxSqWesUzCaTzRrqQNu9gV5Lx8GMKSBNdUn5OnMm56Gp086mm_lS2qvR8fmovcyevDlbi6z0/pub?embedded=true&wmode=transparent"
                 width="1000"
                 height="1000"
                 title="Google Doc Embed"

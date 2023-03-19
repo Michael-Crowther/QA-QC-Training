@@ -20,6 +20,13 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "sequelize":{
+    "username": "mcrowther@wysslingconsulting.com",
+    "password": "Wyssling1",
+    "database": "qa_qc_bible",
+    "host": "localhost",
+    "dialect": "postgres"
+  },
   "include": [
     "src"
   ]
