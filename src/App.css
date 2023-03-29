@@ -134,18 +134,27 @@ label {
   cursor: pointer;
   text-decoration: none;
   color: rgb(7, 7, 7);
-  padding: 15px;
+  padding: 10px;
   text-align: center;
   transition: 0.4s all;
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.76);
   font-family: buttonFont;
   letter-spacing: 3px;
+  margin-top: 20px;
 }
 .loginButton:hover{
   box-shadow: 3px 3px 30px rgba(255, 111, 15, 0.378);
 }
 
-
+.errorContainer{
+  color: red;
+  font-size: 15px;
+  font-family: button-font;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
 
 
 /*Media Queries*/
@@ -204,4 +213,11 @@ label {
   .commandmentHeader{
     font-size: 40px;
    }
+   .emailLabel, .passwordLabel{
+    font-size: 15px;
+  }
+  .emailInput, .passwordInput{
+    font-size: 12px;
+    width: 200px;
+  }
 }

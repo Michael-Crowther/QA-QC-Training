@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import { Link, BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import InputFeild from './components/InputFeild';
 import General from './pages/General';
@@ -24,11 +24,15 @@ const App: React.FC = () => {
   const [initialSearchTerms, setInitialSearchTerms] = useState<string[]>([]);
   const [showLink, setShowLink] = useState(true);
   const [showLogin, setShowLogin] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+
   const navigate = useNavigate();
   const location = useLocation();
 
 
-  
   //The location and useEffect here is to toggle the setShowLink when we return to the home page from other pages
   useEffect(() => {
     const homeDiv = document.querySelector("#Home");
@@ -59,28 +63,104 @@ const App: React.FC = () => {
   //store a timestamp of the last time the user logged in
   useEffect(() => {
     const lastLogin = localStorage.getItem('lastLogin');
-    if(!lastLogin || Date.now() - parseInt(lastLogin) > 10000){
+    if(!lastLogin || Date.now() - parseInt(lastLogin) > 300_000){
       setShowLogin(true);
       localStorage.setItem('lastLogin', Date.now().toString());
     }
   }, []);
+
+
+
+  //This event listener is for the login page. It sends a POST request to the server
+  //with the email and password data.
+  const loginForm = document.querySelector(".loginForm") as HTMLFormElement;
+
+  useEffect(() => {
+    const submitForm = async (event: Event) => {
+      event.preventDefault();
+
+      try{
+        const response = await fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({email, password}),
+        });
+
+        const data = await response.json();
+
+        //If login is successful, redirect user to home page
+        if(response.status === 200)
+          window.location.href = '/';
+        else{
+          //if login fails, display error message
+          setErrorMessage(data.message);
+        }
+      }
+      catch(error){
+        console.log(error);
+      }
+    };
+
+    const loginForm = document.querySelector('.loginForm') as HTMLFormElement;
+    loginForm?.addEventListener('submit', submitForm);
+
+    return () => {
+      loginForm?.removeEventListener('submit', submitForm);
+    };
+  }, [email, password]);
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const emailInput = event.target.value;
+    if(emailInput.trim() == '' || !/\S+@\S+\.\S+/.test(emailInput))
+      setErrorMessage('Please enter a valid email address');
+    else
+      setErrorMessage('');
+    setEmail(event.target.value);
+  };
+
+  const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(event.target.value);
+  };
+
+  const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // prevent form submission
+  
+    if (!email.trim() || !password.trim()) {
+      setErrorMessage('Invalid email or password');
+      return;
+    }
+  };
 
   return (
     <div className="App">
       {showLogin ? (
         // Login screen here
         <div className="mainContentLogin">
-            <form className="loginForm">
+            <form className="loginForm" onSubmit={handleFormSubmit}>
               <div className="formGroup">
-                <label className="emailLabel">Email:</label>
-                <input type="email" name="email" className="emailInput" required />
+                <label htmlFor="email" className="emailLabel">Email:</label>
+                <input
+                  type="email"
+                  id="email"
+                  className="emailInput"
+                  value={email}
+                  onChange={handleEmailChange}
+                />
               </div>
-              <br/>
+
               <div className="formGroup">
-                <label className="passwordLabel">Password:</label>
-                <input type="password" name="password" className="passwordInput" required />
+                <label htmlFor="password" className="passwordLabel">Password:</label>
+                <input
+                  type="password"
+                  id="password"
+                  className="passwordInput"
+                  value={password}
+                  onChange={handlePasswordChange}
+                />
               </div>
-              <br />
+
+              {errorMessage && <div className="errorContainer">{errorMessage}</div>}
+
               <button type="submit" className="loginButton">Login</button>
             </form>
         </div>
