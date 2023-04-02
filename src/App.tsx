@@ -13,6 +13,7 @@ import GroundMounts from "./pages/GroundMounts";
 import AttachmentsScrews from "./pages/AttachmentsScrews";
 import Calculations from "./pages/Calculations";
 import Settings from "./pages/Settings";
+import TeamMeetings from "./pages/TeamMeetings";
 import './App.css';
 import React from "react";
 
@@ -100,6 +101,7 @@ const App: React.FC = () => {
         const data = await response.json();
 
         //If login is successful, redirect user to home page
+        //and set authToken in localStorage for settings page
         if(response.status === 200){
           localStorage.setItem('authToken', data.token);
           window.location.href = '/';
@@ -144,6 +146,10 @@ const App: React.FC = () => {
     }
   };
 
+  const handleLogout = () => {
+    setShowLogin(true);
+  }
+
   return (
     <div className="App">
       {showLogin ? (
@@ -179,7 +185,7 @@ const App: React.FC = () => {
         </div>
       ) : (
         <div id="Home">
-          <span className="heading">QA / QC Bible</span>
+          <span className="heading">QA ~ QC Bible</span>
   
           <InputFeild search={search} setSearch={setSearch} navigate={navigate} initialSearchTerms={initialSearchTerms} />
   
@@ -199,7 +205,8 @@ const App: React.FC = () => {
               <Route path="/attachmentsScrews" element={<AttachmentsScrews />} />
               <Route path="/groundMounts" element={<GroundMounts />} />
               <Route path="/calculations" element={<Calculations />} />
-              <Route path="/settings" element={<Settings showLogin={showLogin} />} />
+              <Route path="/teamMeetings" element={<TeamMeetings />} />
+              <Route path="/settings" element={<Settings showLogin={showLogin} handleLogout={handleLogout} />} />
             </Routes>
             <div className="grid-container" id="grid-container">
               {showLink && <Link className="grid-item" to="/general" onClick={() => setShowLink(false)}>SLA / General</Link>}
@@ -213,6 +220,7 @@ const App: React.FC = () => {
               {showLink && <Link className="grid-item" to="/attachmentsScrews" onClick={() => setShowLink(false)}>Attachments / Screws</Link>}
               {showLink && <Link className="grid-item" to="/groundMounts" onClick={() => setShowLink(false)}>Ground Mounts</Link>}
               {showLink && <Link className="grid-item" to="/calculations" onClick={() => setShowLink(false)}>Calculations</Link>}
+              {showLink && <Link className="grid-item" to="/teamMeetings" onClick={() => setShowLink(false)}>Team Meetings</Link>}
             </div>
           </div>
         </div>

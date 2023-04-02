@@ -1,47 +1,133 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from 'react';
+import Modal from 'react-modal';
+import SuccessModal from '../pages/SuccessModal';
 
 interface SettingsProps {
     showLogin: boolean;
+    handleLogout: () => void;
 }
 
-const Settings: React.FC<SettingsProps> = ({showLogin}) => {
+interface PasswordMatch {
+  passwordMatch: boolean;
+}
+
+Modal.setAppElement('#root');
+
+
+const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
+    const [showChangePassword, setShowChangePassword] = useState(false);
 
-    //This useState fetches userInfo from REST API which was defined in the
-    //server.cjs file
+    //Password form useStates
+    const [currentPassword, setCurrentPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [passwordMatch, setPasswordMatch] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
+    const [formSubmitted, setFormSubmitted] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+
+
+        //useEffect for calling API from server.cjs to check if entered
+    //password for changing matches what is in the database
     useEffect(() => {
-        const fetchUserInfo = async () => {
-          try{
-            const response = await fetch('http://localhost:5000/api/user', {
-              headers: {'Authorization': `Bearer ${localStorage.getItem('authToken')}`}
-            });
-
-            const data = await response.json();
-
-            console.log(data.firstName);//not getting here
-
-    
-            if(response.status === 200){
-              setFirstName(data.firstName);
-              setLastName(data.lastName);
-              setEmail(data.email);
-            }
-            else{
-              console.log(data.message);
-            }
-          }
-          catch(error){
-            console.log(error);
-          }
+      if(formSubmitted){
+        const checkPasswordMatch = async () => {
+          const response = await fetch('http://localhost:5000/api/checkPasswordMatch', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email, currentPassword }),
+          });
+          const data: PasswordMatch = await response.json();
+          setPasswordMatch(data.passwordMatch);
         };
+        checkPasswordMatch();
+      }
+    }, [email, currentPassword, formSubmitted]);
+
+
+    const handleSubmitPasswordChange = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      setFormSubmitted(true);
     
-        if(!showLogin){
-          fetchUserInfo();
+      // Check if the current password matches what is in the database
+      const response = await fetch('http://localhost:5000/api/checkPasswordMatch', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, currentPassword }),
+      });
+      const data: PasswordMatch = await response.json();
+      const passwordMatch = data.passwordMatch;
+    
+      if (!passwordMatch) {
+        setErrorMessage('Current password is incorrect');
+        return;
+      }
+      else if (newPassword === currentPassword){
+        setErrorMessage('New password must be different than current password');
+        return;
+      }
+    
+      // Check if the new password and confirm passwords match
+      if (newPassword === confirmPassword) {
+        // call API to update password here
+        fetch('http://localhost:5000/api/updatePassword', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify( {email, newPassword} ),
+        });
+        setCurrentPassword('');
+        setNewPassword('');
+        setConfirmPassword('');
+        setErrorMessage('');
+        setShowModal(true);
+      } else {
+        setErrorMessage('New password does not match confirmation');
+      }
+    };
+
+    const handleModalClose = () => {
+      setShowModal(false);
+      setShowChangePassword(false);
+    };
+
+
+    //This useEffect fetches userInfo from REST API which 
+    //is defined in the server.cjs file
+    useEffect(() => {
+    const fetchUserInfo = async () => {
+      try{
+        const response = await fetch('http://localhost:5000/api/user', {
+          headers: {'Authorization': `Bearer ${localStorage.getItem('authToken')}`}
+        });
+
+        const data = await response.json();
+    
+        if(response.status === 200){
+          setFirstName(data.firstName);
+          setLastName(data.lastName);
+          setEmail(data.email);
         }
-      }, [showLogin]);
+        else{
+          console.log(data.message);
+        }
+      }
+      catch(error){
+        console.log(error);
+      }
+    };
+    
+    if(!showLogin){
+      fetchUserInfo();
+    }
+  }, [showLogin]);
+
+  const handleLogoutClick = () => {
+    handleLogout();
+  }
 
 
     return(
@@ -60,12 +146,46 @@ const Settings: React.FC<SettingsProps> = ({showLogin}) => {
                 <input className="settingsTextBox" type="text" value={email} readOnly/>
             </div>
 
-            <div className="grid-container-settings">
-                <div className="grid-item-settings">Change Password</div>
+            {showChangePassword ? (
+              <form className="changePasswordForm" onSubmit={handleSubmitPasswordChange}>
+                <h3 className="settingsHeader">Change Password</h3>
+                <input className="settingsTextBox" 
+                  required 
+                  type="password"
+                  placeholder="Current password..."
+                  value={currentPassword}
+                  onChange={(event) => setCurrentPassword(event.target.value)}
+                />
+                <input className="settingsTextBox" 
+                  required 
+                  type="password"
+                  placeholder="New password..."
+                  value={newPassword}
+                  onChange={(event) => setNewPassword(event.target.value)}
+                
+                />
+                <input className="settingsTextBox" 
+                  required 
+                  type="password"
+                  placeholder="Confirm password..."
+                  value={confirmPassword}
+                  onChange={(event) => setConfirmPassword(event.target.value)}
+                />
+                {errorMessage && <div className="errorContainer">{errorMessage}</div>}
+                <div className="formButtons">
+                  <button className="submitButton" type="submit">Submit</button>
+                  <button className="backButton" onClick={() => setShowChangePassword(false)}>Back</button>
+                </div>
+                <SuccessModal isOpen={showModal} onClose={handleModalClose} />
+              </form>
+            ) : (
+              <div className="grid-container-settings">
+                <div className="grid-item-settings" onClick={() => setShowChangePassword(true)}>Change Password</div>
                 <div className="grid-item-settings">Request Search Term</div>
                 <div className="grid-item-settings">Report a Bug</div>
-                <div className="grid-item-settings">Logout</div>
-            </div>
+                <div className="grid-item-settings" onClick={handleLogoutClick}>Logout</div>
+              </div>
+            )}
         </div>
     );
 }

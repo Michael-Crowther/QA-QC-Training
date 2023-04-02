@@ -88,6 +88,8 @@ app.get('/api/user', auth, async (req, res) => {
   const userInfo = await getUserInfo(email);
   res.json(userInfo);
 });
+
+//authentication function called from the above express API
 function auth(req, res, next) {
   const authToken = req.headers.authorization?.split(' ')[1];
   try {
@@ -98,6 +100,53 @@ function auth(req, res, next) {
     res.status(401).json({ message: 'Unauthorized' });
   }
 }
+
+
+//These next couple routes are for changing the password
+//functionality can be found in the settings page
+
+//route for checking password match
+app.post('/api/checkPasswordMatch', async (req, res) => {
+  try {
+    const { email, currentPassword } = req.body;
+    // fetch user from database using email
+    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+
+    // check if user exists and get the hashed password
+    if (result.rows.length > 0) {
+      const hashedPassword = result.rows[0].hashed_password;
+
+      // compare entered password with hashed password
+      const passwordMatch = await bcrypt.compare(currentPassword, hashedPassword);
+
+      // send response as JSON
+      res.json({ passwordMatch });
+    } else {
+      res.status(404).json({ error: 'User not found' });
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+
+//route for updating password
+app.put('/api/updatePassword', async (req, res) => {
+  const { email, password } = req.body;
+  const newPassword = req.body.newPassword;
+
+  // Hash the new password
+  const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+  // Update the password in the database
+  await pool.query('UPDATE users SET hashed_password = $1 WHERE email = $2', [hashedPassword, email]);
+
+  // Return success message
+  res.json({ message: 'Password updated successfully' });
+});
+
+
 
 //Start the server
 app.listen(port, () => {

@@ -33,7 +33,12 @@
     outline: none;
 }
 
-
+.alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .search-terms {
     border-radius: 8px;
@@ -109,6 +114,29 @@
     animation: rotate 5s linear infinite;
 }
 
+/*Success Modal*/
+.modalContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+.customModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.848);
+    z-index: 1;
+}
+
 @keyframes rotate {
     0% {
       transform: rotate(0deg);
@@ -164,6 +192,8 @@
     letter-spacing: 6px;
     text-decoration: underline;
     text-align: center;
+    transition: 0.4s all;
+
 }
 
 .googleDocEmbedContainer{
@@ -214,12 +244,14 @@
     display: block;
     margin: 0 auto;
     margin-top: 10px;
+    transition: 0.4s all;
 }
 .grid-container-settings{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-gap: 50px;
-    
+    grid-gap: 50px;  
+    transition: 0.4s all;
+    margin-bottom: 40px;
 }
 .grid-item-settings{
     background-color:#fadb92;
@@ -235,11 +267,44 @@
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.76);
     font-family: buttonFont;
     letter-spacing: 3px;
+    transition: 0.4s all;
 }
 .grid-item-settings:hover{
     box-shadow: 3px 3px 30px rgb(255, 111, 15);
     transform: scale(1.09);
 }
+/*Change password in settings page*/
+.changePasswordForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 4em;
+}
+.formButtons {
+  flex-direction: row;
+}
+.backButton, .submitButton{
+  margin: 0 auto;
+  background-color: #fadb92;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(7, 7, 7);
+  padding: 10px;
+  text-align: center;
+  transition: 0.4s all;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.76);
+  font-family: buttonFont;
+  letter-spacing: 3px;
+  margin: 20px;
+}
+.submitButton{
+    background-color: rgb(226, 130, 20)
+}
+
 
 @keyframes glow {
     0% {
@@ -256,6 +321,13 @@
 @media(max-width: 1030px){
     .googleDocEmbedContainer{
         width: 700px;
+    }
+}
+
+@media(max-width: 950px){
+    .grid-container-settings{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;  
     }
 }
 
@@ -311,6 +383,12 @@
         font-size: 30px;
     }
     .googleDocEmbedContainer{
+        width: 300px;
+    }
+    .grid-item-settings{
+        font-size: 25px;  
+    }
+    .settingsTextBox{
         width: 300px;
     }
 }

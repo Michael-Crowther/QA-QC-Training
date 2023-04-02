@@ -72,6 +72,9 @@ const searchFilter: SearchFilter = {
   "5/16 Lag Screws": "/attachmentsScrews",
   "Attachment Spacing": "/attachmentsScrews",
   "Spans": "/calculations",
+  "Team Meetings": "/teamMeetings",
+  "Training": "/teamMeetings",
+  "Engineers": "/sendToEngineers",
 };
 
 function getLink(searchTerm: string): string | undefined {
