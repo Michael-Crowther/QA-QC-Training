@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from "react-router-dom";
 import "./styles.css";
+import gearImage from '../gear.png';
+
 
 interface Props{
     search: string;
@@ -101,7 +104,7 @@ const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) 
   function handleDocumentClick(event: MouseEvent){
     const target = event.target as HTMLElement;
     const className = target.className;
-    console.log(className);
+    //console.log(className);
     if(className !== "search-terms" && !target.closest(".input"))
       setInputSelected(false);
   }
@@ -115,7 +118,7 @@ const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) 
     let numElements = dropDownElements.length;
     if(link){
       navigate(link);
-      console.log(link);
+      //console.log(link);
       setSearch("");
       setSearchTerms([]);
     }//goes to first link in search terms if full key isnt typed
@@ -213,8 +216,11 @@ const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) 
         onFocus={handleInputFocus}
         >
       </input>
-
+      <Link to="/settings" className="gear">
+          <img src={gearImage} alt="Gear" />
+      </Link>
       <button className="submit" type="submit" >Go</button>
+
       {inputSelected && shouldRenderSearchTerms() && (
         <div className="search-terms" id="search-terms">
           {Object.keys(searchFilter).filter(key => key.toLowerCase().startsWith(search.toLowerCase())).map((key, index) => (

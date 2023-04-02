@@ -12,10 +12,21 @@ import Database from "./pages/Database";
 import GroundMounts from "./pages/GroundMounts";
 import AttachmentsScrews from "./pages/AttachmentsScrews";
 import Calculations from "./pages/Calculations";
-
+import Settings from "./pages/Settings";
 import './App.css';
 import React from "react";
 
+
+interface LoginResponse {
+  status: number;
+  message: string;
+  authToken: string;
+  userInfo?: {
+    firstName: string;
+    lastName: string;
+    email: string;
+  }
+}
 
 const App: React.FC = () => {
   
@@ -63,7 +74,7 @@ const App: React.FC = () => {
   //store a timestamp of the last time the user logged in
   useEffect(() => {
     const lastLogin = localStorage.getItem('lastLogin');
-    if(!lastLogin || Date.now() - parseInt(lastLogin) > 300_000){
+    if(!lastLogin || Date.now() - parseInt(lastLogin) > 30000){
       setShowLogin(true);
       localStorage.setItem('lastLogin', Date.now().toString());
     }
@@ -80,7 +91,7 @@ const App: React.FC = () => {
       event.preventDefault();
 
       try{
-        const response = await fetch('http://localhost:3000/login', {
+        const response = await fetch('http://localhost:5000/login', {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email, password}),
@@ -89,8 +100,10 @@ const App: React.FC = () => {
         const data = await response.json();
 
         //If login is successful, redirect user to home page
-        if(response.status === 200)
+        if(response.status === 200){
+          localStorage.setItem('authToken', data.token);
           window.location.href = '/';
+        }
         else{
           //if login fails, display error message
           setErrorMessage(data.message);
@@ -186,6 +199,7 @@ const App: React.FC = () => {
               <Route path="/attachmentsScrews" element={<AttachmentsScrews />} />
               <Route path="/groundMounts" element={<GroundMounts />} />
               <Route path="/calculations" element={<Calculations />} />
+              <Route path="/settings" element={<Settings showLogin={showLogin} />} />
             </Routes>
             <div className="grid-container" id="grid-container">
               {showLink && <Link className="grid-item" to="/general" onClick={() => setShowLink(false)}>SLA / General</Link>}

@@ -82,8 +82,6 @@ html{
   box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.76);
   font-family: buttonFont;
   letter-spacing: 3px;
-  
-  
 }
 .grid-item:hover{
   box-shadow: 3px 3px 30px rgb(255, 111, 15);
@@ -155,6 +153,7 @@ label {
   justify-content: center;
   margin-top: 20px;
 }
+
 
 
 /*Media Queries*/
