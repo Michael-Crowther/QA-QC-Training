@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import SuccessModal from '../pages/SuccessModal';
 
+
 interface SettingsProps {
     showLogin: boolean;
     handleLogout: () => void;
@@ -19,9 +20,9 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
-    const [showChangePassword, setShowChangePassword] = useState(false);
-
+    
     //Password form useStates
+    const [showChangePassword, setShowChangePassword] = useState(false);
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -30,6 +31,12 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     const [formSubmitted, setFormSubmitted] = useState(false);
     const [showModal, setShowModal] = useState(false);
 
+    //Report Bug Form useStates
+    const [showReportBug, setShowReportBug] = useState(false);
+    const [bugTitle, setBugTitle] = useState('');
+    const [bugDescription, setBugDescription] = useState('');
+
+    
 
         //useEffect for calling API from server.cjs to check if entered
     //password for changing matches what is in the database
@@ -92,6 +99,36 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     const handleModalClose = () => {
       setShowModal(false);
       setShowChangePassword(false);
+      setShowReportBug(false);
+    };
+
+
+    const handleReportBugSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+
+      try {
+        const response = await fetch('http://localhost:5000/report-bug', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, bugTitle, bugDescription })
+        });
+
+        setBugTitle('');
+        setBugDescription('');
+        setShowModal(true);
+
+
+        if (response.ok) {
+          console.log('Bug report submitted successfully!');
+        } else {
+          console.error('Error submitting bug report');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      
     };
 
 
@@ -176,13 +213,38 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
                   <button className="submitButton" type="submit">Submit</button>
                   <button className="backButton" onClick={() => setShowChangePassword(false)}>Back</button>
                 </div>
-                <SuccessModal isOpen={showModal} onClose={handleModalClose} />
+                <SuccessModal isOpen={showModal} onClose={handleModalClose} modalMessage="Your password was successfully changed"/>
+              </form>
+            ) : showReportBug ? (
+              <form className="reportBugForm" onSubmit={handleReportBugSubmit}>
+                <h3 className="settingsHeader">Report a Bug</h3>
+                <input
+                  className="settingsTextBox"
+                  required
+                  type="text"
+                  placeholder="Bug title..."
+                  value={bugTitle}
+                  onChange={(event) => setBugTitle(event.target.value)}
+                />
+                <textarea
+                  className="settingsTextAreaBox"
+                  required
+                  placeholder="Please describe the bug (where did it happen, what were you doing when it happened)..."
+                  value={bugDescription}
+                  onChange={(event) => setBugDescription(event.target.value)}
+                />
+                {errorMessage && <div className="errorContainer">{errorMessage}</div>}
+                <div className="formButtons">
+                  <button className="submitButton" type="submit">Submit</button>
+                  <button className="backButton" onClick={() => setShowReportBug(false)}>Back</button>
+                </div>
+                <SuccessModal isOpen={showModal} onClose={handleModalClose} modalMessage="Your bug report was successfully submitted. Thank you for your feedback"/>
               </form>
             ) : (
               <div className="grid-container-settings">
                 <div className="grid-item-settings" onClick={() => setShowChangePassword(true)}>Change Password</div>
                 <div className="grid-item-settings">Request Search Term</div>
-                <div className="grid-item-settings">Report a Bug</div>
+                <div className="grid-item-settings" onClick={() => setShowReportBug(true)}>Report a Bug</div>
                 <div className="grid-item-settings" onClick={handleLogoutClick}>Logout</div>
               </div>
             )}
