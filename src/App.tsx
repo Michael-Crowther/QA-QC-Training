@@ -18,24 +18,12 @@ import './App.css';
 import React from "react";
 
 
-interface LoginResponse {
-  status: number;
-  message: string;
-  authToken: string;
-  userInfo?: {
-    firstName: string;
-    lastName: string;
-    email: string;
-  }
-}
-
 const App: React.FC = () => {
   
   const [search, setSearch] = useState<string>("");
   // eslint-disable-next-line
   const [initialSearchTerms, setInitialSearchTerms] = useState<string[]>([]);
   const [showLink, setShowLink] = useState(true);
-  const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -97,8 +85,6 @@ const App: React.FC = () => {
 
   //This event listener is for the login page. It sends a POST request to the server
   //with the email and password data.
-  const loginForm = document.querySelector(".loginForm") as HTMLFormElement;
-
   useEffect(() => {
     const submitForm = async (event: Event) => {
       event.preventDefault();
@@ -126,7 +112,6 @@ const App: React.FC = () => {
             window.location.href = '/';
             localStorage.setItem('authToken', data.token);
             setShowLogin(false);
-            setUserLoggedIn(true);
           }, 1000);
         }
         else{
@@ -150,7 +135,7 @@ const App: React.FC = () => {
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const emailInput = event.target.value;
-    if(emailInput.trim() == '' || !/\S+@\S+\.\S+/.test(emailInput))
+    if(emailInput.trim() === '' || !/\S+@\S+\.\S+/.test(emailInput))
       setErrorMessage('Please enter a valid email address');
     else
       setErrorMessage('');

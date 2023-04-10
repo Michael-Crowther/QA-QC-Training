@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import Modal from 'react-modal';
 
 interface Props {

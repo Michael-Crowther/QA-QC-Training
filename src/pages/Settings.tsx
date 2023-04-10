@@ -26,6 +26,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     const [currentPassword, setCurrentPassword] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    //eslint-disable-next-line
     const [passwordMatch, setPasswordMatch] = useState(false);
     const [errorMessage, setErrorMessage] = useState('');
     const [formSubmitted, setFormSubmitted] = useState(false);
