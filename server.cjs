@@ -16,7 +16,6 @@ app.use(express.json());
 app.use(bodyParser.json());
 
 
-
 //setup postgreSQL pool
 const pool = new Pool({
   user: "postgres",
@@ -26,7 +25,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-
+const jwtsecret = "fj456ksks`=-[]./drbnms";
 
 // Define a function to check if the entered password matches the hashed password
 const isPasswordMatched = (password, hashed_password, salt) => {
@@ -47,14 +46,15 @@ app.post('/login', async (req, res) => {
     // If user is found, check if entered password matches hashed password
     if (result.rows.length > 0) {
       const user = result.rows[0];
+      const deactivated = user.deactivated;
       const isPasswordCorrect = isPasswordMatched(password, user.hashed_password, user.salt);
-      if (isPasswordCorrect) {
+      if (isPasswordCorrect && deactivated == false) {
         const email = user.email;
         const userInfo = await getUserInfo(email);
 
         //Generate and sign a JWT authToken
         const payload = { email: user.email };
-        const token = jwt.sign(payload, process.env.JWT_SECRET);
+        const token = jwt.sign(payload, jwtsecret);
 
 
         res.status(200).json({ message: 'Login successful', token });
@@ -99,7 +99,7 @@ app.get('/api/user', auth, async (req, res) => {
 function auth(req, res, next) {
   const authToken = req.headers.authorization?.split(' ')[1];
   try {
-    const decodedToken = jwt.verify(authToken, process.env.JWT_SECRET);
+    const decodedToken = jwt.verify(authToken, jwtsecret);
     req.user = { email: decodedToken.email };
     next();
   } catch (error) {
@@ -189,6 +189,41 @@ app.post('/report-bug', async (req, res) => {
     const { firstName, lastName } = userInfo;
     const fileId = '1y_7bf82ZqhTMv28owTKE7VPwGf2wX96ecE4dwtsn1pU';
     const fileContent = `${firstName} ${lastName}\n\nBug Title: ${bugTitle}\n\nBug Description: ${bugDescription}\n\n-----------------------------------------\n`;
+    
+ 
+    const requests = [
+      {
+        insertText: {
+          text: `\n${fileContent}`,
+          endOfSegmentLocation: {}
+        }
+      }
+    ];
+
+    const response = await docs.documents.batchUpdate({
+      documentId: fileId,
+      requestBody: {
+        requests
+      }
+    });
+    
+    console.log(`File updated: ${response.data.id}`);
+    res.status(200).json({ message: 'Bug report submitted.' });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Error submitting bug report.' });
+  }
+});
+
+//Request search term API
+app.post('/request-term', async (req, res) => {
+  try {
+    const { email, searchTermRequest, searchTermDescription } = req.body;
+
+    const userInfo = await getUserInfo(email);
+    const { firstName, lastName } = userInfo;
+    const fileId = '1ngSJVJwqD4kSUR0YdK3Cvh0Z5nLZEHXrWEen6432chM';
+    const fileContent = `${firstName} ${lastName}\n\nSearch Term: ${searchTermRequest}\n\nDescription: ${searchTermDescription}\n\n-----------------------------------------\n`;
     
  
     const requests = [

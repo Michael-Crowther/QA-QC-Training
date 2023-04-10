@@ -146,6 +146,25 @@
     }
   }
 
+  .loading, .loadingLogin {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid rgb(226, 130, 20);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+    margin-top: 200px;
+  }
+  .loadingLogin{
+    margin-top: 0;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
 .mainContent{
     display: flex;
     flex-direction: column;
@@ -228,6 +247,7 @@
     justify-content: center;
     flex-direction: column;
     margin-bottom: 4em;
+    margin-top: 2em;
 }
 .settingsHeader{
     font-size: 20px;
@@ -287,12 +307,12 @@
     transform: scale(1.09);
 }
 /*Change password in settings page*/
-.changePasswordForm, .reportBugForm{
+.changePasswordForm, .reportBugForm, .searchTermForm{
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 4em;
+    margin-bottom: 3em;
 }
 .formButtons {
   flex-direction: row;
@@ -401,7 +421,7 @@
     .grid-item-settings{
         font-size: 25px;  
     }
-    .settingsTextBox{
+    .settingsTextBox, .settingsTextAreaBox{
         width: 300px;
     }
 }

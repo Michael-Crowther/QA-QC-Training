@@ -57,7 +57,7 @@ html{
   transition: 0.4s all;
 }
 
-.hidden{
+.hidden, .docHidden{
   display: none;
 }
 

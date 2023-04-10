@@ -36,7 +36,12 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     const [bugTitle, setBugTitle] = useState('');
     const [bugDescription, setBugDescription] = useState('');
 
-    
+    //Request Search Term useStates
+    const [showSearchTerm, setShowSearchTerm] = useState(false);
+    const [searchTermRequest, setSearchTermRequest] = useState('');
+    const [searchTermDescription, setShowSearchTermDescription] = useState('');
+
+
 
         //useEffect for calling API from server.cjs to check if entered
     //password for changing matches what is in the database
@@ -100,6 +105,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       setShowModal(false);
       setShowChangePassword(false);
       setShowReportBug(false);
+      setShowSearchTerm(false);
     };
 
 
@@ -124,6 +130,34 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
           console.log('Bug report submitted successfully!');
         } else {
           console.error('Error submitting bug report');
+        }
+      } catch (error) {
+        console.error(error);
+      }
+      
+    };
+
+    const handleSearchTermSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+
+      try {
+        const response = await fetch('http://localhost:5000/request-term', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ email, searchTermRequest, searchTermDescription })
+        });
+
+        setSearchTermRequest('');
+        setShowSearchTermDescription('');
+        setShowModal(true);
+
+
+        if (response.ok) {
+          console.log('Search term submitted successfully!');
+        } else {
+          console.error('Error submitting search term');
         }
       } catch (error) {
         console.error(error);
@@ -240,10 +274,35 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
                 </div>
                 <SuccessModal isOpen={showModal} onClose={handleModalClose} modalMessage="Your bug report was successfully submitted. Thank you for your feedback"/>
               </form>
+            ) : showSearchTerm ? (
+              <form className="searchTermForm" onSubmit={handleSearchTermSubmit}>
+                <h3 className="settingsHeader">Request Search Term</h3>
+                <input
+                  className="settingsTextBox"
+                  required
+                  type="text"
+                  placeholder="Search Term to Request..."
+                  value={searchTermRequest}
+                  onChange={(event) => setSearchTermRequest(event.target.value)}
+                />
+                <textarea
+                  className="settingsTextAreaBox"
+                  required
+                  placeholder="Please provide any additional information here..."
+                  value={searchTermDescription}
+                  onChange={(event) => setShowSearchTermDescription(event.target.value)}
+                />
+                {errorMessage && <div className="errorContainer">{errorMessage}</div>}
+                <div className="formButtons">
+                  <button className="submitButton" type="submit">Submit</button>
+                  <button className="backButton" onClick={() => setShowSearchTerm(false)}>Back</button>
+                </div>
+                <SuccessModal isOpen={showModal} onClose={handleModalClose} modalMessage="Your request was successfully submitted. Thank you for your feedback"/>
+              </form>
             ) : (
               <div className="grid-container-settings">
                 <div className="grid-item-settings" onClick={() => setShowChangePassword(true)}>Change Password</div>
-                <div className="grid-item-settings">Request Search Term</div>
+                <div className="grid-item-settings" onClick={() => setShowSearchTerm(true)}>Request Search Term</div>
                 <div className="grid-item-settings" onClick={() => setShowReportBug(true)}>Report a Bug</div>
                 <div className="grid-item-settings" onClick={handleLogoutClick}>Logout</div>
               </div>

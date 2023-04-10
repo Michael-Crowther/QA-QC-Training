@@ -2,25 +2,38 @@ import { Link } from "react-router-dom";
 
 
 const ErrorRatePolicy: React.FC = () => {
-    return(
+
+    const handleLoad = () => {
+        const iFrame = document.querySelector(".docHidden");
+        const loading = document.querySelector(".loading");
+        iFrame?.classList.remove("docHidden");
+        iFrame?.classList.add("doc");
+        loading?.classList.remove("loading");
+        loading?.classList.add("docHidden");
+      }
+    
+      return (
         <div className="mainContent">
-            <Link to="/" style = {{textDecoration: 'none', color: 'white'}}>
-                <div className = "buttonContainer">
-                    <button className="homeButton">Home</button>
-                </div>
-            </Link>
-            <h1 className="pageHeader">Error Rate Policy</h1>
+          <Link to="/" className="homeLink">
+            <div className="buttonContainer">
+              <button className="homeButton">Home</button>
+            </div>
+          </Link>
+          <h1 className="pageHeader">Error Rate Policy</h1>
             <div className="googleDocEmbedContainer">
-                <iframe className = "doc"
-                src="https://docs.google.com/document/d/e/2PACX-1vRsAQGxm4cfmJndek_huCHpqx0cDOHZretdYbqcV2G6lOE8Hrtb8w9dqGQlQCEKmaNSNOTYczeVfGDS/pub?embedded=true&wmode=transparent"
+              <iframe
+                className="docHidden"
+                src="https://docs.google.com/document/d/e/2PACX-1vRsAQGxm4cfmJndek_huCHpqx0cDOHZretdYbqcV2G6lOE8Hrtb8w9dqGQlQCEKmaNSNOTYczeVfGDS/pub?embedded=true"
                 width="1000"
                 height="1000"
                 title="Google Doc Embed"
                 allowFullScreen
-                />
+                onLoad={handleLoad}
+              />
             </div>
+            <div className="loading"></div>
         </div>
-    );
+      );
 }
 
 export default ErrorRatePolicy;

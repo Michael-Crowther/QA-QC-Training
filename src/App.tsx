@@ -35,7 +35,7 @@ const App: React.FC = () => {
   // eslint-disable-next-line
   const [initialSearchTerms, setInitialSearchTerms] = useState<string[]>([]);
   const [showLink, setShowLink] = useState(true);
-  const [showLogin, setShowLogin] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState(false);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -50,6 +50,7 @@ const App: React.FC = () => {
     const homeDiv = document.querySelector("#Home");
     const commandmentHeader = document.querySelector("#commandmentHeader");
     const gridContainer = document.querySelector("#grid-container");
+
 
     if (location.pathname === '/') {
       setShowLink(true);
@@ -70,17 +71,28 @@ const App: React.FC = () => {
     }
   }, [location]);
 
-  //This useState is used to make the login screen show every week to the user
+
+   //This useState is used to make the login screen show every week to the user
   //instead of every time the app is opened. I'm using a localStorage here to
   //store a timestamp of the last time the user logged in
-  useEffect(() => {
+
+  const [showLogin, setShowLogin] = useState<boolean>(() => {
     const lastLogin = localStorage.getItem('lastLogin');
-    if(!lastLogin || Date.now() - parseInt(lastLogin) > 30000){
-      setShowLogin(true);
+    // Show login page if last login was more than a week ago
+    return !lastLogin || Date.now() - parseInt(lastLogin) > 7 * 24 * 60 * 60 * 1000;
+  });
+
+  useEffect(() => {
+    if (showLogin) {
+      localStorage.removeItem('lastLogin');
+    } else {
       localStorage.setItem('lastLogin', Date.now().toString());
     }
-  }, []);
+  }, [showLogin]);
 
+  const handleLogout = () => {
+    setShowLogin(true);
+  };
 
 
   //This event listener is for the login page. It sends a POST request to the server
@@ -90,6 +102,8 @@ const App: React.FC = () => {
   useEffect(() => {
     const submitForm = async (event: Event) => {
       event.preventDefault();
+      const loginForm = document.querySelector(".loginForm");
+      const loading = document.querySelector(".docHidden");
 
       try{
         const response = await fetch('http://localhost:5000/login', {
@@ -103,8 +117,17 @@ const App: React.FC = () => {
         //If login is successful, redirect user to home page
         //and set authToken in localStorage for settings page
         if(response.status === 200){
-          localStorage.setItem('authToken', data.token);
-          window.location.href = '/';
+          loginForm?.classList.add("hidden");
+          loginForm?.classList.remove("loginForm");
+          loading?.classList.remove("docHidden");
+          loading?.classList.add("loadingLogin");
+
+          setTimeout(() => {
+            window.location.href = '/';
+            localStorage.setItem('authToken', data.token);
+            setShowLogin(false);
+            setUserLoggedIn(true);
+          }, 1000);
         }
         else{
           //if login fails, display error message
@@ -123,6 +146,7 @@ const App: React.FC = () => {
       loginForm?.removeEventListener('submit', submitForm);
     };
   }, [email, password]);
+
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const emailInput = event.target.value;
@@ -145,10 +169,6 @@ const App: React.FC = () => {
       return;
     }
   };
-
-  const handleLogout = () => {
-    setShowLogin(true);
-  }
 
   return (
     <div className="App">
@@ -182,6 +202,7 @@ const App: React.FC = () => {
 
               <button type="submit" className="loginButton">Login</button>
             </form>
+            <div className="docHidden"></div>
         </div>
       ) : (
         <div id="Home">
