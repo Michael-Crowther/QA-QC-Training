@@ -14,18 +14,19 @@ const port =  5000;
 app.use(cors())
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(express.static(path.resolve(__dirname, '../build')));
 
 
 //setup postgreSQL pool
 const pool = new Pool({
-  user: "postgres",
-  host: "qa-qc-bible",
-  database: "qa_qc_bible",
-  password: "Scammerscaneatmybutt1!",
-  port: 5432,
+  user: process.env.DB_USER,
+  host: process.env.DB_HOST,
+  database: process.env.DB_NAME,
+  password: process.env.DB_PASSWORD,
+  port: process.env.DB_PORT,
 });
 
-const jwtsecret = "fj456ksks`=-[]./drbnms";
+const jwtsecret = process.env.JWT_SECRET;
 
 // Define a function to check if the entered password matches the hashed password
 const isPasswordMatched = (password, hashed_password, salt) => {
@@ -158,8 +159,8 @@ app.put('/api/updatePassword', async (req, res) => {
 //--------------------GOOGLE API HERE---------------------//
 
 const credentials = {
-  client_email: 'qa-qc-bible@qa-qc-bible.iam.gserviceaccount.com',
-  private_key: "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDSOMxHhd0LEcYc\nRHPAFRbnVFnsZV1k2cRaJxXed4h5rTBjo0S5k7osLSFFDTjfCAURWPIUYWjBNQ+u\n7XKbVnCw7oPg60wTVcpg+PSPZenz5TDQeo6D19/8N1Wty7c3KGn2FGurJfXzziBA\nsCRSXdMb13A3ARhUD/om104xFE1l/VyfxIh75u6OGaQeqMLxL5LDTMVnRs70nwSx\nfJj3F1Oh54fj3COn8++N/wPrPPyADirMKCotjsr9i2njnd3Pwy6ln9HtOy5xG+Q5\nW7J0qincrWTbqCcX/yfcglmpFaAu3P1lTtq4hK1ajV0k6yFv2k0dwouddkzP6bhf\nk3p4NDcRAgMBAAECggEAIyUcvc5a5IldqgclpNTBxf3bpMJTiVNA2OOU6+Lm/ZSf\nNOEsUawpYU5QNBegTOUt17cbjZ21YiupShDnaqHaaDIP+S/NQaRDl8+3LywWH1DP\nRuNeZRtXlnZ3y/z1TfLjOCE02OGZS1/IE5h/EggejZaIa6GyvAcJxqmTKHBg+i5C\nMOzSzy5n/6rmjAD2nFosU2nNZehp+adniAvIYbP+N29HKi9xlulbaBO8ruae2wVx\nOTOqAZWmS4JB5ai3zqr1l8okqNF2zev1kA/Y6O1PASMzZ+XICij5i5VtBlCRyIRE\nUxyJGlS+TlhdXO32MjKbYMsGushGsOPONfQitbpzywKBgQD2008twn8okkLc65B9\nvxaEZhcKvOtou+qZ44IF7kn5sxy85pvoq0iShjE/vZjRZ/BP2yY0b1Rxgn4/bITI\n4zxCmLHjnyJVgW3Fp+rO/UIKto+BKERFzEfsOz/Y6smU3Xll0op/bQzKx2fKv1LE\npbz1stFDwG78uoVJ0boDpauX2wKBgQDaCS8dBE8Ve1tD2tI1EP6aRb+Qf4h8K+RM\nuSE40mw5bv8p3Tz27YG1J1Hp0/V2F8tS6wFk8Y62Tn4vaK3TLVjr9oFLwTnQD2dh\nwQmveP2OEHzPLBQN+KQFobpOGARVl/lRy9PypUCclR38KfW0BPzWvJUdz4X8y3EX\n6QAbMwEmgwKBgEqW7v2YIk9Da/tRILgvcAGQzHPNRaK/7xSUQS3Dpg1UiGG5mvIE\nGQlWjjmB9VWLAH9Rbck4v58R3U8TX0lKCmLhvBhadci7NU4fAYGN3VBZfSJ95avm\nIPINsay+vy5Cg7Y2mu4JKW16Ny55BO0yXNkvMbg0xhWP1EnLnFgPz7wzAoGBALrf\naDvsd4On6H7ty4CkAjNjWF6Wj/os/E0t1uWGpC9NjPDqp9fTlHoZK0HH4vfGSQPW\nW6mSx4hFGi20AFeg5DfJXOP6xnwm16qW8qAsiNT8GJzP4Jhg5OPWy4EnYH+j85JB\nqnSrYgdSXxLDO82BANtjYkLcnLAgBdxCXU7ylifVAoGBALIoFSeXp/Ld+z4uWH4F\n9qSUIW+MZeHdc5nwxboPr9XJXMpZ1L3bFs72z2L6z8CW18d548znLBEZl9lS50Gm\n1xJKVPJ2RhAlHFnZJ9HixJ9j8xvvKBC8o0XR+6DwZlxTsTbsJmwu6ZY3oO44bBDv\nYL0seH6Ma/avHEuy+m5kWwgn\n-----END PRIVATE KEY-----\n",
+  client_email: process.env.G_CLIENT_EMAIL,
+  private_key: process.env.G_PRIVATE_KEY,
 };
 
 const jwtClient = new JWT({
@@ -187,7 +188,7 @@ app.post('/report-bug', async (req, res) => {
 
     const userInfo = await getUserInfo(email);
     const { firstName, lastName } = userInfo;
-    const fileId = '1y_7bf82ZqhTMv28owTKE7VPwGf2wX96ecE4dwtsn1pU';
+    const fileId = process.env.G_FILE_ID_BUG_REPORT;
     const fileContent = `${firstName} ${lastName}\n\nBug Title: ${bugTitle}\n\nBug Description: ${bugDescription}\n\n-----------------------------------------\n`;
     
  
@@ -222,7 +223,7 @@ app.post('/request-term', async (req, res) => {
 
     const userInfo = await getUserInfo(email);
     const { firstName, lastName } = userInfo;
-    const fileId = '1ngSJVJwqD4kSUR0YdK3Cvh0Z5nLZEHXrWEen6432chM';
+    const fileId = G_FILE_ID_REQUEST_TERM;
     const fileContent = `${firstName} ${lastName}\n\nSearch Term: ${searchTermRequest}\n\nDescription: ${searchTermDescription}\n\n-----------------------------------------\n`;
     
  

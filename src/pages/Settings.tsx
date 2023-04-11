@@ -42,6 +42,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     const [searchTermRequest, setSearchTermRequest] = useState('');
     const [searchTermDescription, setShowSearchTermDescription] = useState('');
 
+    const BACKEND_URL = process.env.BACKEND_URL;
 
 
         //useEffect for calling API from server.cjs to check if entered
@@ -49,7 +50,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     useEffect(() => {
       if(formSubmitted){
         const checkPasswordMatch = async () => {
-          const response = await fetch('https://qa-qc-bible.com/api/checkPasswordMatch', {
+          const response = await fetch(`${BACKEND_URL}/api/checkPasswordMatch`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, currentPassword }),
@@ -67,7 +68,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       setFormSubmitted(true);
     
       // Check if the current password matches what is in the database
-      const response = await fetch('https://qa-qc-bible.com/api/checkPasswordMatch', {
+      const response = await fetch(`${BACKEND_URL}/api/checkPasswordMatch`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, currentPassword }),
@@ -87,7 +88,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       // Check if the new password and confirm passwords match
       if (newPassword === confirmPassword) {
         // call API to update password here
-        fetch('https://qa-qc-bible.com/api/updatePassword', {
+        fetch(`${BACKEND_URL}/api/updatePassword`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify( {email, newPassword} ),
@@ -114,7 +115,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       event.preventDefault();
 
       try {
-        const response = await fetch('https://qa-qc-bible.com/report-bug', {
+        const response = await fetch(`${BACKEND_URL}/report-bug`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -142,7 +143,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       event.preventDefault();
 
       try {
-        const response = await fetch('https://qa-qc-bible.com/request-term', {
+        const response = await fetch(`${BACKEND_URL}/request-term`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -172,7 +173,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     useEffect(() => {
     const fetchUserInfo = async () => {
       try{
-        const response = await fetch('https://qa-qc-bible.com/api/user', {
+        const response = await fetch(`${BACKEND_URL}/api/user`, {
           headers: {'Authorization': `Bearer ${localStorage.getItem('authToken')}`}
         });
 

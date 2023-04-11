@@ -32,6 +32,8 @@ const App: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  const BACKEND_URL = process.env.BACKEND_URL;
+
 
   //The location and useEffect here is to toggle the setShowLink when we return to the home page from other pages
   useEffect(() => {
@@ -92,7 +94,7 @@ const App: React.FC = () => {
       const loading = document.querySelector(".docHidden");
 
       try{
-        const response = await fetch('https://qa-qc-bible.com/login', {
+        const response = await fetch(`${BACKEND_URL}/login`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email, password}),
