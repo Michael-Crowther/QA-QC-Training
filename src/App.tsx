@@ -132,7 +132,7 @@ const App: React.FC = () => {
     return () => {
       loginForm?.removeEventListener('submit', submitForm);
     };
-  }, [email, password]);
+  }, [email, password, BACKEND_URL]);
 
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {

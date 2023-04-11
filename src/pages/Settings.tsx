@@ -60,7 +60,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
         };
         checkPasswordMatch();
       }
-    }, [email, currentPassword, formSubmitted]);
+    }, [email, currentPassword, formSubmitted, BACKEND_URL]);
 
 
     const handleSubmitPasswordChange = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -196,7 +196,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     if(!showLogin){
       fetchUserInfo();
     }
-  }, [showLogin]);
+  }, [showLogin, BACKEND_URL]);
 
   const handleLogoutClick = () => {
     handleLogout();
