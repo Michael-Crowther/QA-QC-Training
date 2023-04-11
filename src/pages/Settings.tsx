@@ -49,7 +49,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     useEffect(() => {
       if(formSubmitted){
         const checkPasswordMatch = async () => {
-          const response = await fetch('http://localhost:5000/api/checkPasswordMatch', {
+          const response = await fetch('https://qa-qc-bible.com/api/checkPasswordMatch', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, currentPassword }),
@@ -67,7 +67,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       setFormSubmitted(true);
     
       // Check if the current password matches what is in the database
-      const response = await fetch('http://localhost:5000/api/checkPasswordMatch', {
+      const response = await fetch('https://qa-qc-bible.com/api/checkPasswordMatch', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, currentPassword }),
@@ -87,7 +87,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       // Check if the new password and confirm passwords match
       if (newPassword === confirmPassword) {
         // call API to update password here
-        fetch('http://localhost:5000/api/updatePassword', {
+        fetch('https://qa-qc-bible.com/api/updatePassword', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify( {email, newPassword} ),
@@ -114,7 +114,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       event.preventDefault();
 
       try {
-        const response = await fetch('http://localhost:5000/report-bug', {
+        const response = await fetch('https://qa-qc-bible.com/report-bug', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -142,7 +142,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       event.preventDefault();
 
       try {
-        const response = await fetch('http://localhost:5000/request-term', {
+        const response = await fetch('https://qa-qc-bible.com/request-term', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -172,7 +172,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     useEffect(() => {
     const fetchUserInfo = async () => {
       try{
-        const response = await fetch('http://localhost:5000/api/user', {
+        const response = await fetch('https://qa-qc-bible.com/api/user', {
           headers: {'Authorization': `Bearer ${localStorage.getItem('authToken')}`}
         });
 
