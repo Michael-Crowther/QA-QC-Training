@@ -92,7 +92,7 @@ const App: React.FC = () => {
       event.preventDefault();
       const loginForm = document.querySelector(".loginForm");
       const loading = document.querySelector(".docHidden");
-
+      console.log(BACKEND_URL);
       try{
         const response = await fetch(`${BACKEND_URL}/login`, {
           method: 'POST',
