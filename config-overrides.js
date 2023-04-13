@@ -1,6 +1,10 @@
-const webpack = require('webpack'); 
+const webpack = require('webpack');
+const { addBabelPlugin } = require('customize-cra');
+
 module.exports = function override(config) { 
 		const fallback = config.resolve.fallback || {}; 
+    addBabelPlugin('babel-plugin-styled-components'),
+
 		Object.assign(fallback, { 
     	"crypto": require.resolve("crypto-browserify"), 
       "stream": require.resolve("stream-browserify"), 

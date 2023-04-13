@@ -6,15 +6,15 @@ const jwt = require('jsonwebtoken');
 const bodyParser = require('body-parser');
 const { google } = require('googleapis');
 const { JWT } = require('google-auth-library');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
-const port =  5000;
+const port =  process.env.PORT || 5000;
 
 app.use(cors())
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.static(path.resolve(__dirname, '../build')));
 
 
 //setup postgreSQL pool
@@ -251,6 +251,13 @@ app.post('/request-term', async (req, res) => {
   }
 });
 
+
+app.use(express.static(path.join(__dirname, 'build')));
+
+// Serve the index.html file for all other requests
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build/index.html'));
+});
 
 //Start the server
 app.listen(port, () => {
