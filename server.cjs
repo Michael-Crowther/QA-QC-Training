@@ -252,13 +252,24 @@ app.post('/request-term', async (req, res) => {
 });
 
 
-app.use(express.static(path.join(__dirname, 'build')));
+// Serve the combined JavaScript file
+app.use(express.static(path.join(__dirname, '/public'), {
+  index: false,
+  extensions: ['js']
+}));
+
+// Serve the rest of the static files
+app.use(express.static(path.join(__dirname, '/public'), {
+  index: false,
+  extensions: ['css', 'png', 'jpg', 'jpeg', 'gif', 'ico', 'html', 'htm']
+}));
 
 // Serve the index.html file for all other requests
+/*
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build/index.html'));
+  res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
-
+*/
 //Start the server
 app.listen(port, () => {
   console.log("Server started on port", port);
