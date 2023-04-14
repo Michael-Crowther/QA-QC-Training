@@ -16,9 +16,7 @@ import Settings from "./pages/Settings";
 import TeamMeetings from "./pages/TeamMeetings";
 import './App.css';
 import React from "react";
-import dotenv from 'dotenv';
 
-dotenv.config();
 
 const App: React.FC = () => {
   
@@ -95,17 +93,19 @@ const App: React.FC = () => {
       const loginForm = document.querySelector(".loginForm");
       const loading = document.querySelector(".docHidden");
       try{
-        const response = await fetch(`${BACKEND_URL}/login`, {
+        const response = await fetch('/login');
+        const BACKEND_URL = await response.text();
+        const responseLogin = await fetch(`${BACKEND_URL}/login`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email, password}),
         });
 
-        const data = await response.json();
+        const data = await responseLogin.json();
 
         //If login is successful, redirect user to home page
         //and set authToken in localStorage for settings page
-        if(response.status === 200){
+        if(responseLogin.status === 200){
           loginForm?.classList.add("hidden");
           loginForm?.classList.remove("loginForm");
           loading?.classList.remove("docHidden");
