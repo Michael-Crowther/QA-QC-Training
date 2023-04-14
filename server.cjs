@@ -28,8 +28,8 @@ const pool = new Pool({
 
 const jwtsecret = process.env.JWT_SECRET;
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-console.log(BACKEND_URL);
+//const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+//console.log(BACKEND_URL);
 
 // Define a function to check if the entered password matches the hashed password
 const isPasswordMatched = (password, hashed_password, salt) => {
@@ -61,7 +61,6 @@ app.post('/login', async (req, res) => {
         const payload = { email: user.email };
         const token = jwt.sign(payload, jwtsecret);
 
-        res.send(BACKEND_URL);
         res.status(200).json({ message: 'Login successful', token });
       } else {
         res.status(401).json({ message: 'Invalid email or password' });
