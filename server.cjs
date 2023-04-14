@@ -35,8 +35,6 @@ const pool = new Pool({
 
 const jwtsecret = process.env.JWT_SECRET;
 
-console.log(process.env.DB_NAME);
-
 
 // Define a function to check if the entered password matches the hashed password
 const isPasswordMatched = (password, hashed_password, salt) => {
@@ -48,6 +46,7 @@ app.post('/login', async (req, res) => {
   try{
     //Extract the email and password from the request body
     const { email, password } = req.body;
+    res.setHeader('Access-Control-Allow-Origin', 'https://qa-qc-bible.com');
 
     //Query the database to see if there is a user with the given email and password
     const query = `SELECT * FROM users WHERE email = $1`;
