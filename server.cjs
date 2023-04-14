@@ -28,8 +28,8 @@ const pool = new Pool({
 
 const jwtsecret = process.env.JWT_SECRET;
 
-//const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-//console.log(BACKEND_URL);
+console.log(database);
+
 
 // Define a function to check if the entered password matches the hashed password
 const isPasswordMatched = (password, hashed_password, salt) => {
@@ -41,7 +41,6 @@ app.post('/login', async (req, res) => {
   try{
     //Extract the email and password from the request body
     const { email, password } = req.body;
-
 
     //Query the database to see if there is a user with the given email and password
     const query = `SELECT * FROM users WHERE email = $1`;
@@ -255,14 +254,14 @@ app.post('/request-term', async (req, res) => {
 });
 
 
-// Serve the combined JavaScript file
-app.use(express.static(path.join(__dirname, '/dist')));
+// Serve static files from the /dist directory
+app.use(express.static(path.join(__dirname, './dist')));
 
-// Serve the index.html file for all other requests
-
+// Serve the index.html file for all requests
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/dist/index.html'));
+  res.sendFile(path.join(__dirname, './dist/index.html'));
 });
+
 
 //Start the server
 app.listen(port, () => {
