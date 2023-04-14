@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "./static/css/main.379b1655.css",
-    "main.js": "./static/js/main.e7224251.js",
+    "main.js": "./static/js/main.98c3b605.js",
     "static/media/Philosopher-Regular.ttf": "./static/media/Philosopher-Regular.8c8d18ba8a991d3045f9.ttf",
     "static/media/biblePic.jpg": "./static/media/biblePic.3d8301e0f0e76e211d1f.jpg",
     "static/media/Bloom Monday Demo.otf": "./static/media/Bloom Monday Demo.a590e4fb8fdd0ffccf8d.otf",
@@ -10,10 +10,10 @@
     "static/media/gear.png": "./static/media/gear.9a373a2f7f89c6001892.png",
     "index.html": "./index.html",
     "main.379b1655.css.map": "./static/css/main.379b1655.css.map",
-    "main.e7224251.js.map": "./static/js/main.e7224251.js.map"
+    "main.98c3b605.js.map": "./static/js/main.98c3b605.js.map"
   },
   "entrypoints": [
     "static/css/main.379b1655.css",
-    "static/js/main.e7224251.js"
+    "static/js/main.98c3b605.js"
   ]
 }
