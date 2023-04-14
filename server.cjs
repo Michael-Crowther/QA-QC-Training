@@ -12,14 +12,13 @@ const path = require('path');
 const app = express();
 const port =  process.env.PORT || 5000;
 
-app.use(cors({
-  credentials: true,
-  origin: [
-    'http://localhost:5000', 
-    'http://guarded-wildwood-93633.herokuapp.com',
-    'https://guarded-wildwood-93633.herokuapp.com'
-  ],
-}));
+const corsOptions ={
+  origin:'*', 
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
+
+app.use(cors(corsOptions)) // Use this after the variable declaration
 app.use(express.json());
 app.use(bodyParser.json());
 
@@ -46,7 +45,6 @@ app.post('/login', async (req, res) => {
   try{
     //Extract the email and password from the request body
     const { email, password } = req.body;
-    res.setHeader('Access-Control-Allow-Origin', 'https://qa-qc-bible.com');
 
     //Query the database to see if there is a user with the given email and password
     const query = `SELECT * FROM users WHERE email = $1`;
