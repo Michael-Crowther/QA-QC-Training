@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const { google } = require('googleapis');
 const { JWT } = require('google-auth-library');
 const path = require('path');
-require('dotenv').config();
+//require('dotenv').config();
 
 const app = express();
 const port =  process.env.PORT || 5000;
@@ -16,8 +16,8 @@ app.use(cors({
   credentials: true,
   origin: [
     'http://localhost:5000', 
-    'http://guarded-wildwood-93633.herokuapp.com',         // <-- ADD
-    'https://guarded-wildwood-93633.herokuapp.com'         // <-- ADD
+    'http://guarded-wildwood-93633.herokuapp.com',
+    'https://guarded-wildwood-93633.herokuapp.com'
   ],
 }));
 app.use(express.json());
@@ -35,7 +35,7 @@ const pool = new Pool({
 
 const jwtsecret = process.env.JWT_SECRET;
 
-console.log(database);
+console.log(process.env.DB_NAME);
 
 
 // Define a function to check if the entered password matches the hashed password
