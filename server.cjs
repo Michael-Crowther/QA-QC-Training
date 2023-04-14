@@ -38,6 +38,18 @@ app.post('/login', async (req, res) => {
   try{
     //Extract the email and password from the request body
     const { email, password } = req.body;
+    const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
+    const response = await fetch(`${BACKEND_URL}/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        email,
+        password
+      })
+    });
 
     //Query the database to see if there is a user with the given email and password
     const query = `SELECT * FROM users WHERE email = $1`;
@@ -253,16 +265,7 @@ app.post('/request-term', async (req, res) => {
 
 
 // Serve the combined JavaScript file
-app.use(express.static(path.join(__dirname, '/public'), {
-  index: false,
-  extensions: ['js']
-}));
-
-// Serve the rest of the static files
-app.use(express.static(path.join(__dirname, '/public'), {
-  index: false,
-  extensions: ['css', 'png', 'jpg', 'jpeg', 'gif', 'ico', 'html', 'htm']
-}));
+app.use(express.static(path.join(__dirname, './dist')));
 
 // Serve the index.html file for all other requests
 /*
