@@ -93,7 +93,7 @@ const App: React.FC = () => {
       const loginForm = document.querySelector(".loginForm");
       const loading = document.querySelector(".docHidden");
       try{
-        const response = await fetch('/login', {
+        const response = await fetch(`${BACKEND_URL}/login`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email, password}),
