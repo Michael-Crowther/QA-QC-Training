@@ -32,7 +32,7 @@ const App: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+  const REACT_APP_BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 
   //The location and useEffect here is to toggle the setShowLink when we return to the home page from other pages
@@ -93,7 +93,7 @@ const App: React.FC = () => {
       const loginForm = document.querySelector(".loginForm");
       const loading = document.querySelector(".docHidden");
       try{
-        const responseLogin = await fetch(`${BACKEND_URL}/login`, {
+        const responseLogin = await fetch(`${REACT_APP_BACKEND_URL}/login`, {
           method: 'POST',
           headers: {'Content-Type': 'application/json'},
           body: JSON.stringify({email, password}),
@@ -131,7 +131,7 @@ const App: React.FC = () => {
     return () => {
       loginForm?.removeEventListener('submit', submitForm);
     };
-  }, [email, password, BACKEND_URL]);
+  }, [email, password, REACT_APP_BACKEND_URL]);
 
 
   const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
