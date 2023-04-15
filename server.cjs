@@ -172,7 +172,7 @@ app.put('/api/updatePassword', async (req, res) => {
 
 const credentials = {
   client_email: process.env.G_CLIENT_EMAIL,
-  private_key: process.env.G_PRIVATE_KEY,
+  private_key: process.env.G_PRIVATE_KEY.split(String.raw`\n`).join('\n'),
 };
 
 const jwtClient = new JWT({
@@ -202,7 +202,7 @@ app.post('/report-bug', async (req, res) => {
     const { firstName, lastName } = userInfo;
     const fileId = process.env.G_FILE_ID_BUG_REPORT;
     const fileContent = `${firstName} ${lastName}\n\nBug Title: ${bugTitle}\n\nBug Description: ${bugDescription}\n\n-----------------------------------------\n`;
-    
+    console.log(fileId);
  
     const requests = [
       {
@@ -235,7 +235,7 @@ app.post('/request-term', async (req, res) => {
 
     const userInfo = await getUserInfo(email);
     const { firstName, lastName } = userInfo;
-    const fileId = G_FILE_ID_REQUEST_TERM;
+    const fileId = process.env.G_FILE_ID_REQUEST_TERM;
     const fileContent = `${firstName} ${lastName}\n\nSearch Term: ${searchTermRequest}\n\nDescription: ${searchTermDescription}\n\n-----------------------------------------\n`;
     
  
