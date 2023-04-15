@@ -42,7 +42,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     const [searchTermRequest, setSearchTermRequest] = useState('');
     const [searchTermDescription, setShowSearchTermDescription] = useState('');
 
-    const BACKEND_URL = process.env.BACKEND_URL;
+    const BACKEND_URL = "https://guarded-wildwood-93633.herokuapp.com";
 
 
         //useEffect for calling API from server.cjs to check if entered
