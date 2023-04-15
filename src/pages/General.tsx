@@ -11,7 +11,6 @@ const General: React.FC = () => {
     loading?.classList.add("docHidden");
   }
 
-
   return (
     <div className="mainContent">
       <Link to="/" className="homeLink">
