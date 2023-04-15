@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import Modal from 'react-modal';
 import SuccessModal from '../pages/SuccessModal';
@@ -44,6 +44,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
 
     const BACKEND_URL = "https://guarded-wildwood-93633.herokuapp.com";
 
+    const navigate = useNavigate();
 
         //useEffect for calling API from server.cjs to check if entered
     //password for changing matches what is in the database
@@ -200,6 +201,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
 
   const handleLogoutClick = () => {
     handleLogout();
+    navigate('/');
   }
 
 
