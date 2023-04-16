@@ -195,7 +195,7 @@ const App: React.FC = () => {
   
           <InputFeild search={search} setSearch={setSearch} navigate={navigate} initialSearchTerms={initialSearchTerms} />
   
-          {showLink && <h1 className="commandmentHeader" id="commandmentHeader">Policies & Procedures</h1>}
+          {showLink && <h1 className="commandmentHeader" id="commandmentHeader">Training Guide</h1>}
   
           <div className="commandments">
             <Routes>
