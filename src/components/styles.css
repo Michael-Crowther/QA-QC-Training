@@ -409,6 +409,9 @@
         transform: scale(0.08);
         left: -132px;
     }
+    .modalContent{
+        width: 300px;
+    }
     .homeButton{
         font-size: 30px;
     }
