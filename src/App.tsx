@@ -195,7 +195,7 @@ const App: React.FC = () => {
   
           <InputFeild search={search} setSearch={setSearch} navigate={navigate} initialSearchTerms={initialSearchTerms} />
   
-          {showLink && <h1 className="commandmentHeader" id="commandmentHeader">Commandments</h1>}
+          {showLink && <h1 className="commandmentHeader" id="commandmentHeader">Policies & Procedures</h1>}
   
           <div className="commandments">
             <Routes>
@@ -215,7 +215,7 @@ const App: React.FC = () => {
               <Route path="/settings" element={<Settings showLogin={showLogin} handleLogout={handleLogout} />} />
             </Routes>
             <div className="grid-container" id="grid-container">
-              {showLink && <Link className="grid-item" to="/general" onClick={() => {setShowLink(false); navigate("/general")}}>SLA / General</Link>}
+              {showLink && <Link className="grid-item" to="/general" onClick={() => setShowLink(false)}>SLA / General</Link>}
               {showLink && <Link className="grid-item" to="/errorRatePolicy" onClick={() => setShowLink(false)}>Error Rate Policy</Link>}
               {showLink && <Link className="grid-item" to="/folders" onClick={() => setShowLink(false)}>Folders</Link>}
               {showLink && <Link className="grid-item" to="/sendToEngineers" onClick={() => setShowLink(false)}>Send to Engineers</Link>}
