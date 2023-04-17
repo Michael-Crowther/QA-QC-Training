@@ -65,7 +65,7 @@ html{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 50px;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
 }
 
 .grid-item{
