@@ -24,6 +24,8 @@ const General: React.FC = () => {
             className="docHidden"
             src="https://docs.google.com/document/d/e/2PACX-1vS05lc5uHMaRQWITWSFcusg_KMRf9jKEypsbjdA3ctflPNXmwz9Gz3zT7gQjb0Fm9tMQqes9ehSDxNG/pub?embedded=true"
             title="Google Doc Embed"
+            width="8.5in"
+            height="11in"
             allowFullScreen
             onLoad={handleLoad}
           />
