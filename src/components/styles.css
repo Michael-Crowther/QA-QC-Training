@@ -218,8 +218,10 @@
 .googleDocEmbedContainer{
     background-size: cover;
     border: none;
+    /*
     display: flex;
     justify-content: center;
+    */
     border-radius: 10px;
     animation: glow 3s ease-in-out infinite;
     box-shadow: 0 0 20px #f3810f;
