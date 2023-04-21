@@ -216,7 +216,6 @@
 }
 
 .googleDocEmbedContainer{
-    /*background: url('/scroll.png') center center;*/
     background-size: cover;
     border: none;
     display: flex;
@@ -234,10 +233,8 @@
     justify-content: center;
 }
 .doc{
-    height: 1300px;
     border: none;
     border-radius: 10px;
-    height: 1000px;
 }
 
 /*Settings page*/
