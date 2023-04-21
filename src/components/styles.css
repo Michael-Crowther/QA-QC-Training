@@ -223,6 +223,7 @@
     border-radius: 10px;
     animation: glow 3s ease-in-out infinite;
     box-shadow: 0 0 20px #f3810f;
+
 }
 
 .homeLink{
@@ -234,7 +235,8 @@
 }
 .doc{
     border: none;
-    border-radius: 10px;
+    width: 856px;
+    height: 1056px;
 }
 
 /*Settings page*/

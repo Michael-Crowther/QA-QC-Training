@@ -33,6 +33,7 @@ const App: React.FC = () => {
   const location = useLocation();
 
   const REACT_APP_BACKEND_URL = "https://guarded-wildwood-93633.herokuapp.com";
+  //onst REACT_APP_BACKEND_URL = "http://localhost:5000";
 
   //The location and useEffect here is to toggle the setShowLink when we return to the home page from other pages
   useEffect(() => {
@@ -154,6 +155,7 @@ const App: React.FC = () => {
       return;
     }
   };
+
 
   return (
     <div className="App">

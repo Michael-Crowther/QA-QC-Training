@@ -23,8 +23,6 @@ const TeamMeetings: React.FC = () => {
           <iframe
             className="docHidden"
             src="https://docs.google.com/document/d/e/2PACX-1vRDDQG63lKRz5fLYrYqLxtvMM-1BZvHiWfajPtSiPapPAX_leCvCAhONwiCqZjUIrrRRhNdAJRcs0sD/pub?embedded=true"
-            width="1000"
-            height="1000"
             title="Google Doc Embed"
             allowFullScreen
             onLoad={handleLoad}

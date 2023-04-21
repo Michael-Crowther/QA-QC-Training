@@ -24,8 +24,6 @@ const SendToEngineers: React.FC = () => {
               <iframe
                 className="docHidden"
                 src="https://docs.google.com/document/d/e/2PACX-1vSd_MBWP2jiVkFY8CeWSNLb8IUUASsHtvHPLNlGWpb5b-vdGqJt21b4jTepE4UmZi1ryEI6lE1e8Aqp/pub?embedded=true"
-                width="1000"
-                height="1000"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}

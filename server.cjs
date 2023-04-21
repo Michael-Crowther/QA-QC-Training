@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const { google } = require('googleapis');
 const { JWT } = require('google-auth-library');
 const path = require('path');
-//require('dotenv').config();
+require('dotenv').config();
 
 const app = express();
 const port =  process.env.PORT || 5000;
@@ -25,6 +25,7 @@ app.use(bodyParser.json());
 
 //setup postgreSQL pool
 const pool = new Pool({
+  //NEED TO ADD THIS BACK FOR PRODUCTION
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false

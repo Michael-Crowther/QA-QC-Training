@@ -24,8 +24,6 @@ const Calculations: React.FC = () => {
               <iframe
                 className="docHidden"
                 src="https://docs.google.com/document/d/e/2PACX-1vRFUlGxiQXth-m6ehJUtOXHYskKQAEUYmppih5H4YCHol1H6w7RnSTw11HwX4jJmT80OPRQ98yoAkSW/pub?embedded=true"
-                width="1000"
-                height="1000"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}
