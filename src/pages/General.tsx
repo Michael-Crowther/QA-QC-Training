@@ -13,9 +13,9 @@ const General: React.FC = () => {
     loading?.classList.add("docHidden");
   }
 
-  
+/*  
   const toggleFullScreen = () => {
-    /*
+
     if (iframeRef.current) {
       if (iframeRef.current.requestFullscreen) {
         iframeRef.current.requestFullscreen();
@@ -30,9 +30,9 @@ const General: React.FC = () => {
     const iFrame = document.querySelector(".doc");
     iFrame?.classList.remove("doc");
     iFrame?.classList.add("docFullscreen");
-    */
+    
   };
-  
+  */
 
   return (
     <div className="mainContent">

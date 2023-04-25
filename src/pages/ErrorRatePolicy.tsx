@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
 
 const ErrorRatePolicy: React.FC = () => {
-    const iFrameRef = useRef<HTMLIFrameElement>(null);
+    //const iFrameRef = useRef<HTMLIFrameElement>(null);
 
 
     const handleLoad = () => {
-        const iFrame = iFrameRef.current;
-        //const iFrame = document.querySelector(".docHidden");
+        //const iFrame = iFrameRef.current;
+        const iFrame = document.querySelector(".docHidden");
         const loading = document.querySelector(".loading");
         iFrame?.classList.remove("docHidden");
         iFrame?.classList.add("doc");
@@ -28,7 +27,6 @@ const ErrorRatePolicy: React.FC = () => {
             <div className="googleDocEmbedContainer">
               <iframe
                 className="docHidden"
-                ref={iFrameRef}
                 src="https://docs.google.com/document/d/e/2PACX-1vRsAQGxm4cfmJndek_huCHpqx0cDOHZretdYbqcV2G6lOE8Hrtb8w9dqGQlQCEKmaNSNOTYczeVfGDS/pub?embedded=true"
                 title="Google Doc Embed"
                 allowFullScreen
