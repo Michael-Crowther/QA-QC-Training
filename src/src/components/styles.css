@@ -1,0 +1,448 @@
+@font-face {
+    font-family: headerFont;
+    src: url("/fonts/Ancient\ Medium.ttf");
+}
+@font-face {
+    font-family: buttonFont;
+    src: url("/fonts/Bloom\ Monday\ Demo.otf");
+}
+
+
+.input{
+    display: flex;
+    width: 50%;
+    position: relative;
+    align-items: center;
+}
+.inputBox{
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 50px;
+    padding: 20px;
+    font-size: 25px;
+    border: none;
+    transition: 0.2s;
+    box-shadow: inset 0 0 5px black;
+    box-shadow: 0 0 5px black;
+    position: relative;
+}
+
+.inputBox:focus{
+    box-shadow: 0 0 10px 8px rgba(226, 130, 20, 0.284);
+    outline: none;
+}
+
+.alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.search-terms {
+    border-radius: 8px;
+    padding: 30px;
+    position: absolute;
+    z-index: 1;
+    background-color: rgb(0, 0, 0);
+    top: 100%;
+    left: 50%;
+    width: 75%;
+    transform: translate(-50%, 0);
+    overflow-y: auto;
+    box-shadow: 0px 0px 15px rgba(226, 130, 20, 0.392);
+    transition: 0.4s all;
+}
+  
+.search-term {
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    transition: 0.2s;
+    font-family: buttonFont;
+}
+.search-term:hover, .search-term-selected{
+    box-shadow: 0px 0px 15px rgb(255, 136, 0);
+    background-color: rgb(184, 184, 184);
+    cursor: pointer;
+}
+
+.submit{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+    margin-right: 15px;
+    border-radius: 50px;
+    right: 0px;
+    border: none;
+    font-size: 15px;
+    background-color: rgb(226, 130, 20);
+    color: white;
+    transition: 0.4s all;
+    box-shadow: 0px 0px 20px black;
+}
+.submit:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 5px black;
+    cursor: pointer;
+}
+
+.gear{
+    position: absolute;
+    transform: scale(0.17);
+    margin-top: 22px;
+    left: -120px;
+    display: inline-block;
+    transition: 0.4s all;
+
+}
+.gear img{
+    transition: transform 0.5s ease-in-out;
+}
+.gear:hover img{
+    cursor: pointer;
+    animation: rotate 5s linear infinite;
+}
+
+/*Success Modal*/
+.modalContent {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    
+}
+.customModalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.848);
+    z-index: 1;
+}
+
+@keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  .loading, .loadingLogin {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid rgb(226, 130, 20);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    animation: spin 2s linear infinite;
+    margin: 0 auto;
+    margin-top: 200px;
+  }
+  .loadingLogin{
+    margin-top: 0;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.buttonContainer{
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.homeButton{
+    background-color: #fadb92;
+    border-radius: 5px;
+    font-size: 60px;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 4px;
+    text-align: center;
+    transition: 0.4s all;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.76);
+    font-family: buttonFont;
+    letter-spacing: 3px;
+    border: none;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.homeButton:hover{
+    cursor: pointer;
+    box-shadow: 3px 3px 30px rgb(226, 130, 20);
+    transform: scale(1.09);
+}
+
+.pageHeader{
+    font-size: 50px;
+    color:rgb(226, 130, 20);
+    position: relative;
+    text-shadow: 3px 3px 5px black;
+    font-family: buttonFont;
+    letter-spacing: 6px;
+    text-decoration: underline;
+    text-align: center;
+    transition: 0.4s all;
+
+}
+
+.googleDocEmbedContainer{
+    background-size: cover;
+    border: none;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+    animation: glow 3s ease-in-out infinite;
+    box-shadow: 0 0 20px #f3810f;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.doc{
+    border: none;
+    width: 856px;
+    height: 1056px;
+}
+/*
+.docFullscreen{
+    position: fixed;
+    border: none;    
+    margin:auto;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin-top: 100px;
+    padding-left: 160px;
+}
+*/
+
+.homeLink{
+    text-decoration: none;
+    display: flex;
+    width: 30%;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/*Settings page*/
+.userInfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 4em;
+    margin-top: 2em;
+}
+.settingsHeader{
+    font-size: 20px;
+    font-family: button-font;
+    color: white;
+    margin: 0 auto;
+}
+.settingsTextBox{
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    font-size: 16px;
+    width: 500px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    transition: 0.4s all;
+}
+.settingsTextAreaBox{
+    resize: none;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    padding: 10px;
+    font-size: 16px;
+    width: 500px;
+    height: 100px;
+    display: block;
+    margin: 0 auto;
+    margin-top: 10px;
+    transition: 0.4s all;
+}
+.grid-container-settings{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 50px;  
+    transition: 0.4s all;
+    margin-bottom: 40px;
+}
+.grid-item-settings{
+    background-color:#fadb92;
+    border: none;
+    border-radius: 5px;
+    font-size: 40px;
+    cursor: pointer;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    padding: 15px;
+    text-align: center;
+    transition: 0.4s all;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.76);
+    font-family: buttonFont;
+    letter-spacing: 3px;
+    transition: 0.4s all;
+}
+.grid-item-settings:hover{
+    box-shadow: 3px 3px 30px rgb(255, 111, 15);
+    transform: scale(1.09);
+}
+/*Change password in settings page*/
+.changePasswordForm, .reportBugForm, .searchTermForm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 3em;
+}
+.formButtons {
+  flex-direction: row;
+}
+.backButton, .submitButton{
+  margin: 0 auto;
+  background-color: #fadb92;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: rgb(7, 7, 7);
+  padding: 10px;
+  text-align: center;
+  transition: 0.4s all;
+  box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.76);
+  font-family: buttonFont;
+  letter-spacing: 3px;
+  margin: 20px;
+}
+.submitButton{
+    background-color: rgb(226, 130, 20)
+}
+
+
+@keyframes glow {
+    0% {
+      box-shadow: 0 0 20px #f3810f;
+    }
+    50% {
+      box-shadow: 0 0 30px #c36309;
+    }
+    100% {
+      box-shadow: 0 0 20px #f3810f;
+    }
+  }
+
+@media(max-width: 1030px){
+    .googleDocEmbedContainer{
+        width: 700px;
+    }
+}
+
+@media(max-width: 950px){
+    .grid-container-settings{
+        grid-template-columns: repeat(1, 1fr);
+        grid-gap: 30px;  
+    }
+}
+
+@media(max-width: 800px){
+    .input{
+        width: 60%;
+    }
+    .inputBox{
+      font-size: 15px;
+    }
+    .submit{
+        width: 30px;
+        height: 30px;
+    }
+    .gear{
+        transform: scale(0.1);
+        left: -130px;
+    }
+}
+
+@media(max-width: 799px){
+    .search-terms{
+        padding:15px;
+    }
+    .search-term{
+        font-size:16px;
+    }
+}
+
+@media(max-width:724px){
+    .googleDocEmbedContainer{
+        width: 500px;
+    }
+}
+
+@media(max-width: 500px){
+    .inputBox{
+        font-size: 10px;
+    }
+    .submit{
+        width: 25px;
+        height: 25px;
+        font-size: 8px;
+    }
+    .gear{
+        transform: scale(0.08);
+        left: -132px;
+    }
+    .modalContent{
+        width: 300px;
+    }
+    .homeButton{
+        font-size: 30px;
+    }
+    .pageHeader{
+        font-size: 30px;
+    }
+    .googleDocEmbedContainer{
+        width: 300px;
+    }
+    .grid-item-settings{
+        font-size: 25px;  
+    }
+    .settingsTextBox, .settingsTextAreaBox{
+        width: 300px;
+    }
+}
