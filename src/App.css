@@ -11,6 +11,9 @@ html{
   height: 100%;
   background-color: black;
 }
+body{
+  margin: 0;
+}
 
 
 .App{
@@ -35,6 +38,7 @@ html{
   background-image: none;
   background-color: black;
   height: 100%;
+  
 }
 
 
