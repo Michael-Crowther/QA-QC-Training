@@ -14,8 +14,6 @@ import AttachmentsScrews from "./pages/AttachmentsScrews";
 import Calculations from "./pages/Calculations";
 import Settings from "./pages/Settings";
 import TeamMeetings from "./pages/TeamMeetings";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 import React from "react";
 
