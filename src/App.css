@@ -41,6 +41,7 @@ body{
   
 }
 
+/*
 .fullscreenExit{
   cursor: pointer;
   width: 35px;
@@ -58,6 +59,7 @@ body{
   display: flex;
   align-items: center;
 }
+*/
 
 .heading{
   font-family: headerFont;
@@ -69,9 +71,6 @@ body{
   text-align: center;
   text-shadow: 3px 3px 5px black;
 
-}
-.headingFullscreen{
-  margin-right: 55px;
 }
 
 .commandmentHeader{

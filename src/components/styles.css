@@ -203,12 +203,6 @@
     transform: scale(1.09);
 }
 
-.pageHeaderParent{
-    display: flex;
-    align-items: center;
-    margin-left: 55px;
-}
-
 .pageHeader{
     font-size: 50px;
     color:rgb(226, 130, 20);
@@ -219,9 +213,8 @@
     text-decoration: underline;
     text-align: center;
     transition: 0.4s all;
-    margin-right: 15px;
 }
-
+/*
 .fullscreenButton{
     cursor: pointer;
     width: 35px;
@@ -233,6 +226,7 @@
     transform: scale(1.04);
     transition: 0.4s all;
 }
+*/
 
 .googleDocEmbedContainer{
     background-size: cover;
@@ -248,10 +242,11 @@
 
 .doc{
     border: none;
-    width: 850px;
-    height: 580px;
+    width: 1050px;
+    height: 1056px;
 }
 
+/*
 .docFullscreen{
     width: 850px;
     height: 100%;
@@ -269,6 +264,7 @@
     border-radius: 10px;
 
 }
+*/
 
 
 .homeLink{
