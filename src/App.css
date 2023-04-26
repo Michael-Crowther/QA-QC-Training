@@ -41,6 +41,23 @@ body{
   
 }
 
+.fullscreenExit{
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  color: white;
+  position: relative;
+  margin-right: 30px;
+}
+.fullscreenExit:hover{
+  transform: scale(1.04);
+  transition: 0.4s all;
+}
+
+.headingParent{
+  display: flex;
+  align-items: center;
+}
 
 .heading{
   font-family: headerFont;
@@ -51,6 +68,10 @@ body{
   z-index: 1;
   text-align: center;
   text-shadow: 3px 3px 5px black;
+
+}
+.headingFullscreen{
+  margin-right: 55px;
 }
 
 .commandmentHeader{

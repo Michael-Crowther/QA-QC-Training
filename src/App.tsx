@@ -14,6 +14,8 @@ import AttachmentsScrews from "./pages/AttachmentsScrews";
 import Calculations from "./pages/Calculations";
 import Settings from "./pages/Settings";
 import TeamMeetings from "./pages/TeamMeetings";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faDownLeftAndUpRightToCenter } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 import React from "react";
 
@@ -156,6 +158,27 @@ const App: React.FC = () => {
     }
   };
 
+  const toggleFullScreen = () => {
+    const fullscreenCloseButton = document.querySelector("#fullscreenClose");
+    fullscreenCloseButton?.classList.remove("fullscreenClose");
+    fullscreenCloseButton?.classList.add("hidden");
+
+    const appHeading = document.querySelector(".headingFullscreen");
+    appHeading?.classList.remove("headingFullscreen");
+    appHeading?.classList.add("heading");
+
+    const iFrame = document.querySelector(".docFullscreen");
+    iFrame?.classList.remove("docFullscreen");
+    iFrame?.classList.add("doc");
+
+    if(iFrame){
+      (iFrame as any).style.height = 580 + "px";
+    }
+
+    const inputBox = document.querySelector(".input");
+    inputBox?.classList.remove("hidden");
+  }
+
 
   return (
     <div className="App">
@@ -193,7 +216,15 @@ const App: React.FC = () => {
         </div>
       ) : (
         <div id="Home">
-          <span className="heading">QA ~ QC Bible</span>
+          <div className="headingParent">
+            <FontAwesomeIcon 
+              className="hidden"
+              id="fullscreenClose"
+              icon={faDownLeftAndUpRightToCenter}        
+              onClick={toggleFullScreen}
+            />
+            <span className="heading">QA ~ QC Bible</span>
+          </div>
   
           <InputFeild search={search} setSearch={setSearch} navigate={navigate} initialSearchTerms={initialSearchTerms} />
   

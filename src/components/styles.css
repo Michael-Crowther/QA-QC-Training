@@ -203,6 +203,12 @@
     transform: scale(1.09);
 }
 
+.pageHeaderParent{
+    display: flex;
+    align-items: center;
+    margin-left: 55px;
+}
+
 .pageHeader{
     font-size: 50px;
     color:rgb(226, 130, 20);
@@ -213,7 +219,19 @@
     text-decoration: underline;
     text-align: center;
     transition: 0.4s all;
+    margin-right: 15px;
+}
 
+.fullscreenButton{
+    cursor: pointer;
+    width: 35px;
+    height: 35px;
+    color: white;
+    position: relative;
+}
+.fullscreenButton:hover{
+    transform: scale(1.04);
+    transition: 0.4s all;
 }
 
 .googleDocEmbedContainer{
@@ -230,22 +248,28 @@
 
 .doc{
     border: none;
-    width: 856px;
-    height: 1056px;
+    width: 850px;
+    height: 580px;
 }
-/*
+
 .docFullscreen{
-    position: fixed;
-    border: none;    
-    margin:auto;
-    width: 100%;
+    width: 850px;
     height: 100%;
-    left: 0;
+    position: fixed;
+    bottom: 0;
     top: 0;
+    margin: 0 auto;
     margin-top: 100px;
-    padding-left: 160px;
+    padding: 0;
+    overflow: hidden;
+    z-index:10;
+    border: none;
+    animation: glow 3s ease-in-out infinite;
+    box-shadow: 0 0 20px #f3810f;
+    border-radius: 10px;
+
 }
-*/
+
 
 .homeLink{
     text-decoration: none;

@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUpRightAndDownLeftFromCenter } from '@fortawesome/free-solid-svg-icons';
 
 const General: React.FC = () => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
@@ -13,26 +15,25 @@ const General: React.FC = () => {
     loading?.classList.add("docHidden");
   }
 
-/*  
   const toggleFullScreen = () => {
-
-    if (iframeRef.current) {
-      if (iframeRef.current.requestFullscreen) {
-        iframeRef.current.requestFullscreen();
-      } else if ((iframeRef.current as any).webkitRequestFullscreen) {
-        (iframeRef.current as any).webkitRequestFullscreen();
-      } else if ((iframeRef.current as any).msRequestFullscreen) {
-        (iframeRef.current as any).msRequestFullscreen();
-      }
-    }
-    
-   
     const iFrame = document.querySelector(".doc");
     iFrame?.classList.remove("doc");
     iFrame?.classList.add("docFullscreen");
-    
+    if(iFrame){
+      (iFrame as any).style.height = window.screen.height - 230 + "px";
+    }
+
+    const inputBox = document.querySelector(".input");
+    inputBox?.classList.add("hidden");
+
+    const fullscreenCloseButton = document.querySelector("#fullscreenClose");
+    fullscreenCloseButton?.classList.remove("hidden");
+    fullscreenCloseButton?.classList.add("fullscreenExit");
+
+    const appHeading = document.querySelector(".heading");
+    appHeading?.classList.add("headingFullscreen");
   };
-  */
+  
 
   return (
     <div className="mainContent">
@@ -41,7 +42,14 @@ const General: React.FC = () => {
           <button className="homeButton">Home</button>
         </div>
       </Link>
-      <h1 className="pageHeader">SLA / General</h1>
+      <div className="pageHeaderParent">
+        <h1 className="pageHeader">SLA / General</h1>
+        <FontAwesomeIcon 
+          className="fullscreenButton"
+          icon={faUpRightAndDownLeftFromCenter}        
+          onClick={toggleFullScreen}
+          />
+      </div>
         <div className="googleDocEmbedContainer">
           <iframe
             className="docHidden"
