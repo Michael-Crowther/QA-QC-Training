@@ -4,10 +4,17 @@
   "private": true,
   "homepage": ".",
   "type": "commonjs",
+  "engines": {
+    "node": "18.13.0"
+  },
   "dependencies": {
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@types/gapi": "^0.0.44",
+    "aws": "^0.0.3-2",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.2",
     "cors": "^2.8.5",
@@ -38,7 +45,8 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku_postbuild": "react-app-build --prod"
   },
   "eslintConfig": {
     "extends": [
