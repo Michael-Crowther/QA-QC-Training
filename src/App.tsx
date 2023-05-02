@@ -40,12 +40,14 @@ const App: React.FC = () => {
     const homeDiv = document.querySelector("#Home");
     const commandmentHeader = document.querySelector("#commandmentHeader");
     const gridContainer = document.querySelector("#grid-container");
+    const appElement = document.querySelector(".App");
 
 
     if (location.pathname === '/') {
       setShowLink(true);
       homeDiv?.classList.remove("Page");
       homeDiv?.classList.add("App");
+      appElement?.classList.remove("AppPageActive");
       commandmentHeader?.classList.remove("hidden");
       commandmentHeader?.classList.add("commandmentHeader");
       gridContainer?.classList.remove("hidden");
@@ -156,6 +158,12 @@ const App: React.FC = () => {
     }
   };
 
+  const handleGridItemClick = () => {
+    setShowLink(false);
+    const appElement = document.querySelector(".App");
+    appElement?.classList.add("AppPageActive");
+  }
+
 
 
   return (
@@ -194,7 +202,7 @@ const App: React.FC = () => {
         </div>
       ) : (
         <div id="Home">
-            <span className="heading">QA ~ QC Training</span>
+            <span className="heading">QA~QC Training</span>
   
           <InputFeild search={search} setSearch={setSearch} navigate={navigate} initialSearchTerms={initialSearchTerms} />
   
@@ -218,18 +226,18 @@ const App: React.FC = () => {
               <Route path="/settings" element={<Settings showLogin={showLogin} handleLogout={handleLogout} />} />
             </Routes>
             <div className="grid-container" id="grid-container">
-              {showLink && <Link className="grid-item" to="/general" onClick={() => setShowLink(false)}>SLA / General</Link>}
-              {showLink && <Link className="grid-item" to="/errorRatePolicy" onClick={() => setShowLink(false)}>Error Rate Policy</Link>}
-              {showLink && <Link className="grid-item" to="/folders" onClick={() => setShowLink(false)}>Folders</Link>}
-              {showLink && <Link className="grid-item" to="/sendToEngineers" onClick={() => setShowLink(false)}>Send to Engineers</Link>}
-              {showLink && <Link className="grid-item" to="/templates" onClick={() => setShowLink(false)}>Templates</Link>}
-              {showLink && <Link className="grid-item" to="/roofFraming" onClick={() => setShowLink(false)}>Roof Framing</Link>}
-              {showLink && <Link className="grid-item" to="/codesWindSnow" onClick={() => setShowLink(false)}>Codes / Wind / Snow</Link>}
-              {showLink && <Link className="grid-item" to="/database" onClick={() => setShowLink(false)}>AHJ Database</Link>}
-              {showLink && <Link className="grid-item" to="/attachmentsScrews" onClick={() => setShowLink(false)}>Attachments / Screws</Link>}
-              {showLink && <Link className="grid-item" to="/groundMounts" onClick={() => setShowLink(false)}>Ground Mounts</Link>}
-              {showLink && <Link className="grid-item" to="/calculations" onClick={() => setShowLink(false)}>Calculations</Link>}
-              {showLink && <Link className="grid-item" to="/teamMeetings" onClick={() => setShowLink(false)}>Team Meetings</Link>}
+              {showLink && <Link className="grid-item" to="/general" onClick={handleGridItemClick}>SLA / General</Link>}
+              {showLink && <Link className="grid-item" to="/errorRatePolicy" onClick={handleGridItemClick}>Error Rate Policy</Link>}
+              {showLink && <Link className="grid-item" to="/folders" onClick={handleGridItemClick}>Folders</Link>}
+              {showLink && <Link className="grid-item" to="/sendToEngineers" onClick={handleGridItemClick}>Send to Engineers</Link>}
+              {showLink && <Link className="grid-item" to="/templates" onClick={handleGridItemClick}>Templates</Link>}
+              {showLink && <Link className="grid-item" to="/roofFraming" onClick={handleGridItemClick}>Roof Framing</Link>}
+              {showLink && <Link className="grid-item" to="/codesWindSnow" onClick={handleGridItemClick}>Codes / Wind / Snow</Link>}
+              {showLink && <Link className="grid-item" to="/database" onClick={handleGridItemClick}>AHJ Database</Link>}
+              {showLink && <Link className="grid-item" to="/attachmentsScrews" onClick={handleGridItemClick}>Attachments / Screws</Link>}
+              {showLink && <Link className="grid-item" to="/groundMounts" onClick={handleGridItemClick}>Ground Mounts</Link>}
+              {showLink && <Link className="grid-item" to="/calculations" onClick={handleGridItemClick}>Calculations</Link>}
+              {showLink && <Link className="grid-item" to="/teamMeetings" onClick={handleGridItemClick}>Team Meetings</Link>}
             </div>
           </div>
         </div>

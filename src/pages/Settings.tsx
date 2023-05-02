@@ -199,6 +199,14 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     }
   }, [showLogin, BACKEND_URL]);
 
+
+  //UseEffect to change class of settings page to prevent
+  //from allowing scrolling
+  useEffect(() => {
+    const appElement = document.querySelector(".AppPageActive");
+    appElement?.classList.remove(".AppPageActive");
+  }, [])
+
   const handleLogoutClick = () => {
     handleLogout();
     navigate('/');
