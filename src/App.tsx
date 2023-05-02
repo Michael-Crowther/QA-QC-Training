@@ -194,11 +194,11 @@ const App: React.FC = () => {
         </div>
       ) : (
         <div id="Home">
-            <span className="heading">QA ~ QC Bible</span>
+            <span className="heading">QA ~ QC Training</span>
   
           <InputFeild search={search} setSearch={setSearch} navigate={navigate} initialSearchTerms={initialSearchTerms} />
   
-          {showLink && <h1 className="commandmentHeader" id="commandmentHeader">Training Guide</h1>}
+          {showLink && <h1 className="commandmentHeader" id="commandmentHeader">Policies & Procedures</h1>}
   
           <div className="commandments">
             <Routes>
