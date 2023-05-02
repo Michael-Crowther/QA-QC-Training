@@ -1,19 +1,18 @@
 {
   "files": {
-    "main.css": "./static/css/main.8fbcda14.css",
-    "main.js": "./static/js/main.b73aa924.js",
-    "static/media/Philosopher-Regular.ttf": "./static/media/Philosopher-Regular.8c8d18ba8a991d3045f9.ttf",
-    "static/media/biblePic.jpg": "./static/media/biblePic.3d8301e0f0e76e211d1f.jpg",
+    "main.css": "./static/css/main.4c10fada.css",
+    "main.js": "./static/js/main.409c6c20.js",
+    "static/media/biblePic.jpg": "./static/media/biblePic.0cb769cc7523c2eb1610.jpg",
     "static/media/Bloom Monday Demo.otf": "./static/media/Bloom Monday Demo.a590e4fb8fdd0ffccf8d.otf",
+    "static/media/coolvetica rg.otf": "./static/media/coolvetica rg.3d81d0e1fdbd5f69b232.otf",
     "static/media/Ancient Medium.ttf": "./static/media/Ancient Medium.a59ed847ec519bfb87a7.ttf",
-    "static/media/Seagram tfb.ttf": "./static/media/Seagram tfb.7efd43ff5d6bc4dece9e.ttf",
     "static/media/gear.png": "./static/media/gear.9a373a2f7f89c6001892.png",
     "index.html": "./index.html",
-    "main.8fbcda14.css.map": "./static/css/main.8fbcda14.css.map",
-    "main.b73aa924.js.map": "./static/js/main.b73aa924.js.map"
+    "main.4c10fada.css.map": "./static/css/main.4c10fada.css.map",
+    "main.409c6c20.js.map": "./static/js/main.409c6c20.js.map"
   },
   "entrypoints": [
-    "static/css/main.8fbcda14.css",
-    "static/js/main.b73aa924.js"
+    "static/css/main.4c10fada.css",
+    "static/js/main.409c6c20.js"
   ]
 }
