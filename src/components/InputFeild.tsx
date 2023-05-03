@@ -171,6 +171,9 @@ const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) 
       setSearch("");
       setSearchTerms([]);
     }
+    //For changing CSS styles
+    const appElement = document.querySelector(".App");
+    appElement?.classList.add("AppPageActive");
   }
 
   //this changes the contents of searchTerms when a key is pressed. 
