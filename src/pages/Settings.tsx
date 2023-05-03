@@ -317,6 +317,9 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
                 <div className="grid-item-settings" onClick={() => setShowSearchTerm(true)}>Request Search Term</div>
                 <div className="grid-item-settings" onClick={() => setShowReportBug(true)}>Report a Bug</div>
                 <div className="grid-item-settings" onClick={handleLogoutClick}>Logout</div>
+                <a className="testLink item5" target="_blank" href="https://mcas-proxyweb.mcas.ms/certificate-checker?login=false&originalUrl=https%3A%2F%2Fnam04.safelinks.protection.outlook.com.mcas.ms%2F%3Furl%3Dhttps%253A%252F%252Fforms.gle%252FjRdiXzWNiF1z5V2WA%26data%3D05%257C01%257C10959369%2540uvu.edu%257C26210f0090574f47ae5d08db4c2d5602%257C1ea2b65f2f5e440eb025dfdfafd8e097%257C0%257C0%257C638187529848806317%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3DXUM8ThyC6%252BmWOW5CRgUHvh74ibU53TVXnrdjt%252F4DlBw%253D%26reserved%3D0%26McasTsid%3D20893&McasCSRF=8410fa50b785969b18372766aa7f862b58f5181a1b7b50ec923b0a1b5fbeadc4">
+                  <div className="grid-item-settings">Test</div>
+                </a>
               </div>
             )}
         </div>

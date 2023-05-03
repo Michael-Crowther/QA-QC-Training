@@ -24,6 +24,12 @@ type SearchFilter = {
 const searchFilter: SearchFilter = {
   "SLA": "/general",
   "General": "/general",
+  "Turnaround Time": "/general",
+  "Delivery Rules": "/general",
+  "Training Notes": "/general",
+  "6 Hour Turnaround": "/general",
+
+
   "Send to Engineers": "/sendToEngineers",
   "Codes": "/codesWindSnow",
   "Wind": "/codesWindSnow",
@@ -36,45 +42,7 @@ const searchFilter: SearchFilter = {
   "Folders": "/folders",
   "Roof Framing": "/roofFraming",
   "Attachment and Screw Type": "/attachmentsScrews",
-  "Turnaround Time": "/general",
-  "QA / QC Sheet": "/general",
-  "Pay Structure": "/errorRatePolicy",
-  "Patio Structures": "/sendToEngineers",
-  "Pergolas": "/sendToEngineers",
-  "2x4 Rafters": "/sendToEngineers",
-  "High Snow Load": "/sendToEngineers",
-  "Revisions": "/folders",
-  "COM Accounts": "/folders",
-  "Post Installs": "/folders",
-  "Last Names": "/templates",
-  "Addresses": "/templates",
-  "System Sizes": "/templates",
-  "COA Numbers": "/templates",
-  "Roof Slopes": "/roofFraming",
-  "Array Tilt": "/roofFraming",
-  "Roof Material": "/roofFraming",
-  "Assumed Language": "/roofFraming",
-  "Tile Roofing": "/roofFraming",
-  "Metal Framing": "/roofFraming",
-  "Dead Load": "/roofFraming",
-  "Exposure Categories": "/codesWindSnow",
-  "Calculation Checks": "/codesWindSnow",
-  "Oklahoma Projects": "/database",
-  "Houston Projects": "/database",
-  "New Mexico Projects": "/database",
-  "Upcodes": "/database",
-  "ATC Website": "/database",
-  "Illinois Projects": "/database",
-  "Deck Mounts": "/attachmentsScrews",
-  "Pullout Values": "/attachmentsScrews",
-  "M5x60mm Screws": "/attachmentsScrews",
-  "Embedment Depths": "/attachmentsScrews",
-  "5/16 Lag Screws": "/attachmentsScrews",
-  "Attachment Spacing": "/attachmentsScrews",
-  "Spans": "/calculations",
-  "Team Meetings": "/teamMeetings",
-  "Training": "/teamMeetings",
-  "Engineers": "/sendToEngineers",
+  
 };
 
 function getLink(searchTerm: string): string | undefined {
@@ -204,7 +172,7 @@ const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) 
 
 
   return (
-    <form className="input" onSubmit={handleSearchSubmit}>
+    <form className="input"  onSubmit={handleSearchSubmit}>
       <input 
         className="inputBox" 
         type="input" 

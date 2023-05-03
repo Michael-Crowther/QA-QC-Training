@@ -321,7 +321,7 @@
 }
 .grid-container-settings{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     grid-gap: 50px;  
     transition: 0.4s all;
     margin-bottom: 40px;
@@ -345,6 +345,13 @@
 .grid-item-settings:hover{
     box-shadow: 3px 3px 30px rgb(255, 111, 15);
     transform: scale(1.09);
+}
+.item5{
+    grid-column: 2 / -1;
+}
+.testLink{
+    text-decoration: none;
+
 }
 /*Change password in settings page*/
 .changePasswordForm, .reportBugForm, .searchTermForm{
