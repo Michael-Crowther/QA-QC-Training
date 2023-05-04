@@ -39,6 +39,7 @@ body{
   align-items: center;
   background-image: none;
   background-color: rgba(0, 0, 0, 0.763);
+  overflow-y:visible;
 }
 
 
@@ -222,6 +223,13 @@ label {
   .grid-item{
     font-size: 25px;
    }   
+}
+
+
+@media(min-height:1550px){
+  .AppPageActive{
+    height: 100vh;
+  }
 }
 
 @media(max-height:916px){
