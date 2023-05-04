@@ -42,6 +42,9 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     const [searchTermRequest, setSearchTermRequest] = useState('');
     const [searchTermDescription, setShowSearchTermDescription] = useState('');
 
+    //Tests useStates
+    const [showQuizzes, setShowQuizzes] = useState(false);
+
     const BACKEND_URL = "https://guarded-wildwood-93633.herokuapp.com";
 
     const navigate = useNavigate();
@@ -311,15 +314,30 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
                 </div>
                 <SuccessModal isOpen={showModal} onClose={handleModalClose} modalMessage="Your request was successfully submitted. Thank you for your feedback"/>
               </form>
+            ) : showQuizzes ? (
+              <div className="searchTermForm">
+                <h3 className="settingsHeader">Quizzes</h3>
+                <div className="quiz-grid-container-settings">
+                  <a className="grid-item-settings quizButton" target="_blank" rel="noopener noreferrer" href="https://mcas-proxyweb.mcas.ms/certificate-checker?login=false&originalUrl=https%3A%2F%2Fnam04.safelinks.protection.outlook.com.mcas.ms%2F%3Furl%3Dhttps%253A%252F%252Fforms.gle%252FjRdiXzWNiF1z5V2WA%26data%3D05%257C01%257C10959369%2540uvu.edu%257C26210f0090574f47ae5d08db4c2d5602%257C1ea2b65f2f5e440eb025dfdfafd8e097%257C0%257C0%257C638187529848806317%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3DXUM8ThyC6%252BmWOW5CRgUHvh74ibU53TVXnrdjt%252F4DlBw%253D%26reserved%3D0%26McasTsid%3D20893&McasCSRF=8410fa50b785969b18372766aa7f862b58f5181a1b7b50ec923b0a1b5fbeadc4">
+                    Ground Mounts</a>
+                  <a className="grid-item-settings quizButton" target="_blank" rel="noopener noreferrer" href="https://mcas-proxyweb.mcas.ms/certificate-checker?login=false&originalUrl=https%3A%2F%2Fnam04.safelinks.protection.outlook.com.mcas.ms%2F%3Furl%3Dhttps%253A%252F%252Fforms.gle%252FVWbLZJn1rDUPjxBr5%26data%3D05%257C01%257C10959369%2540uvu.edu%257C26210f0090574f47ae5d08db4c2d5602%257C1ea2b65f2f5e440eb025dfdfafd8e097%257C0%257C0%257C638187529849273672%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3DDXXTuDiFpdYZf9Bz4O9yueCj%252FlcNYv%252FUAjOuk8CbdC4%253D%26reserved%3D0%26McasTsid%3D20893&McasCSRF=8410fa50b785969b18372766aa7f862b58f5181a1b7b50ec923b0a1b5fbeadc4">
+                    Roof Framing</a>
+                  <a className="grid-item-settings quizButton" target="_blank" rel="noopener noreferrer" href="https://mcas-proxyweb.mcas.ms/certificate-checker?login=false&originalUrl=https%3A%2F%2Fnam04.safelinks.protection.outlook.com.mcas.ms%2F%3Furl%3Dhttps%253A%252F%252Fforms.gle%252Fxstwxf62fxHDJwVr5%26data%3D05%257C01%257C10959369%2540uvu.edu%257C26210f0090574f47ae5d08db4c2d5602%257C1ea2b65f2f5e440eb025dfdfafd8e097%257C0%257C0%257C638187529849273672%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3Dl%252Bvl1cqSbErO9ddRTwFrU9yGqYMGaS%252F8IuYFL%252BaHdG0%253D%26reserved%3D0%26McasTsid%3D20893&McasCSRF=8410fa50b785969b18372766aa7f862b58f5181a1b7b50ec923b0a1b5fbeadc4">
+                    Screws</a>
+                  <a className="grid-item-settings quizButton" target="_blank" rel="noopener noreferrer" href="https://mcas-proxyweb.mcas.ms/certificate-checker?login=false&originalUrl=https%3A%2F%2Fnam04.safelinks.protection.outlook.com.mcas.ms%2F%3Furl%3Dhttps%253A%252F%252Fforms.gle%252FPeMnGpof2aP7pS719%26data%3D05%257C01%257C10959369%2540uvu.edu%257C26210f0090574f47ae5d08db4c2d5602%257C1ea2b65f2f5e440eb025dfdfafd8e097%257C0%257C0%257C638187529849273672%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3D2u7QS7cTo2G8BmGoq7pY5zy8K%252B%252Bd4hhhGko%252B6su7VsM%253D%26reserved%3D0%26McasTsid%3D20893&McasCSRF=8410fa50b785969b18372766aa7f862b58f5181a1b7b50ec923b0a1b5fbeadc4">
+                    Random</a>
+                </div>
+                <div className="formButtons">
+                  <button className="backButton" onClick={() => setShowQuizzes(false)}>Back</button>
+                </div>
+              </div>
             ) : (
               <div className="grid-container-settings">
                 <div className="grid-item-settings" onClick={() => setShowChangePassword(true)}>Change Password</div>
                 <div className="grid-item-settings" onClick={() => setShowSearchTerm(true)}>Request Search Term</div>
                 <div className="grid-item-settings" onClick={() => setShowReportBug(true)}>Report a Bug</div>
                 <div className="grid-item-settings" onClick={handleLogoutClick}>Logout</div>
-                <a className="testLink item5" rel="noreferrer" target="_blank" href="https://mcas-proxyweb.mcas.ms/certificate-checker?login=false&originalUrl=https%3A%2F%2Fnam04.safelinks.protection.outlook.com.mcas.ms%2F%3Furl%3Dhttps%253A%252F%252Fforms.gle%252FjRdiXzWNiF1z5V2WA%26data%3D05%257C01%257C10959369%2540uvu.edu%257C26210f0090574f47ae5d08db4c2d5602%257C1ea2b65f2f5e440eb025dfdfafd8e097%257C0%257C0%257C638187529848806317%257CUnknown%257CTWFpbGZsb3d8eyJWIjoiMC4wLjAwMDAiLCJQIjoiV2luMzIiLCJBTiI6Ik1haWwiLCJXVCI6Mn0%253D%257C3000%257C%257C%257C%26sdata%3DXUM8ThyC6%252BmWOW5CRgUHvh74ibU53TVXnrdjt%252F4DlBw%253D%26reserved%3D0%26McasTsid%3D20893&McasCSRF=8410fa50b785969b18372766aa7f862b58f5181a1b7b50ec923b0a1b5fbeadc4">
-                  <div className="grid-item-settings">Test</div>
-                </a>
+                <div className="item5 grid-item-settings" onClick={() => setShowQuizzes(true)}>Quizzes</div>
               </div>
             )}
         </div>

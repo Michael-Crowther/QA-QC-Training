@@ -326,6 +326,15 @@
     transition: 0.4s all;
     margin-bottom: 40px;
 }
+.quiz-grid-container-settings{
+    display: grid;
+    grid-template-columns: repeat(4, 3fr);
+    grid-gap: 50px;  
+    transition: 0.4s all;
+    margin-top: 50px;
+    margin-bottom: 40px;
+
+}
 .grid-item-settings{
     background-color:#fadb92;
     border: none;
@@ -349,6 +358,9 @@
 .item5{
     grid-column: 2 / -1;
 }
+.quizButton{
+    background-color: rgb(116, 151, 211);
+}
 .testLink{
     text-decoration: none;
 
@@ -359,7 +371,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
 }
 .formButtons {
   flex-direction: row;
