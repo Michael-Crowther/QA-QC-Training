@@ -35,7 +35,10 @@ const App: React.FC = () => {
   const REACT_APP_BACKEND_URL = "https://guarded-wildwood-93633.herokuapp.com";
   //const REACT_APP_BACKEND_URL = "http://localhost:5000";
 
-  //The location and useEffect here is to toggle the setShowLink when we return to the home page from other pages
+  //The useEffect here is to toggle the setShowLink when we 
+  //return to the home page from other pages. Also changes classes
+  //for CSS styling. This works... But seems prone to bugs. Might
+  //want to come back here to refactor. Is there a cleaner way?
   useEffect(() => {
     const homeDiv = document.querySelector("#Home");
     const commandmentHeader = document.querySelector("#commandmentHeader");
@@ -64,10 +67,9 @@ const App: React.FC = () => {
   }, [location]);
 
 
-   //This useState is used to make the login screen show every week to the user
+  //This is used to make the login screen show every week to the user
   //instead of every time the app is opened. I'm using a localStorage here to
   //store a timestamp of the last time the user logged in
-
   const [showLogin, setShowLogin] = useState<boolean>(() => {
     const lastLogin = localStorage.getItem('lastLogin');
     // Show login page if last login was more than a week ago
@@ -87,8 +89,8 @@ const App: React.FC = () => {
   };
 
 
-  //This event listener is for the login page. It sends a POST request to the server
-  //with the email and password data.
+  //This event listener is for the login page. It sends a 
+  //POST request to the server with the email and password data.
   useEffect(() => {
     const submitForm = async (event: Event) => {
       event.preventDefault();
@@ -145,9 +147,11 @@ const App: React.FC = () => {
     setEmail(event.target.value);
   };
 
+
   const handlePasswordChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
+
 
   const handleFormSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // prevent form submission
@@ -158,12 +162,12 @@ const App: React.FC = () => {
     }
   };
 
+
   const handleGridItemClick = () => {
     setShowLink(false);
     const appElement = document.querySelector(".App");
     appElement?.classList.add("AppPageActive");
   }
-
 
 
   return (

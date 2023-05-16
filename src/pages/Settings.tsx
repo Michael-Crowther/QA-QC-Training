@@ -49,7 +49,8 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
 
     const navigate = useNavigate();
 
-        //useEffect for calling API from server.cjs to check if entered
+
+    //useEffect for calling API from server.cjs to check if entered
     //password for changing matches what is in the database
     useEffect(() => {
       if(formSubmitted){
@@ -107,6 +108,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       }
     };
 
+
     const handleModalClose = () => {
       setShowModal(false);
       setShowChangePassword(false);
@@ -117,7 +119,6 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
 
     const handleReportBugSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-
       try {
         const response = await fetch(`${BACKEND_URL}/report-bug`, {
           method: 'POST',
@@ -140,8 +141,8 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
       } catch (error) {
         console.error(error);
       }
-      
     };
+
 
     const handleSearchTermSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();

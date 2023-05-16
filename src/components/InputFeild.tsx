@@ -45,6 +45,7 @@ const searchFilter: SearchFilter = {
   
 };
 
+
 function getLink(searchTerm: string): string | undefined {
   const lowercaseSearchTerm = searchTerm.toLowerCase();
   for (const key in searchFilter) {
@@ -54,6 +55,7 @@ function getLink(searchTerm: string): string | undefined {
   }
   return undefined;
 }
+
 
 const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) => {
   const [searchTerms, setSearchTerms] = useSearchTerms(initialSearchTerms);
@@ -80,7 +82,8 @@ const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) 
       setInputSelected(false);
   }
 
-  //happens when the user presses enter or the "GO" button
+
+  //This function happens when the user presses enter or the "GO" button
   const handleSearchSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     //console.log(search);
@@ -103,7 +106,9 @@ const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) 
     }
   };
 
-  //This function checks to make sure joined search terms are equal to a val in searchFilter
+
+  //This function checks to make sure joined search terms are equal 
+  //to a value in the searchFilter
   function shouldRenderSearchTerms(){
     const terms = searchTerms.join("");
     let matched = false;
@@ -116,16 +121,17 @@ const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) 
   }
 
   let selectedText = "";
-   //This function handles when the user highlights
+  //This function handles when the user highlights
   //a chunk of letter from the search bar and deletes them
   //It is called when input tag in form is clicked on
   function handleTextSelection(){
     const selection = window.getSelection();
     if(selection?.toString()){
-      //use has selected text
+      //user has selected text
       selectedText = selection.toString();
     }
   }
+
 
   //This function sets up functionality for clicking
   //search terms in the drop down menu
@@ -144,6 +150,7 @@ const InputFeild = ({ search, setSearch, navigate, initialSearchTerms }: Props) 
     appElement?.classList.add("AppPageActive");
   }
 
+  
   //this changes the contents of searchTerms when a key is pressed. 
   //This is activated at the end of the input tag in the form
   const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>): void => {

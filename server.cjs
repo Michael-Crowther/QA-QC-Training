@@ -47,6 +47,7 @@ const isPasswordMatched = (password, hashed_password, salt) => {
   return bcrypt.compareSync(password, hashed_password);
 };
 
+
 //Define a route for handling login requests
 app.post('/login', async (req, res) => {
   try{
@@ -102,12 +103,14 @@ async function getUserInfo(email) {
   }
 }
 
+
 //Expose getUserInfo through a REST API
 app.get('/api/user', auth, async (req, res) => {
   const email = req.user.email;
   const userInfo = await getUserInfo(email);
   res.json(userInfo);
 });
+
 
 //authentication function called from the above express API
 function auth(req, res, next) {
@@ -228,6 +231,7 @@ app.post('/report-bug', async (req, res) => {
     res.status(500).json({ message: 'Error submitting bug report.' });
   }
 });
+
 
 //Request search term API
 app.post('/request-term', async (req, res) => {

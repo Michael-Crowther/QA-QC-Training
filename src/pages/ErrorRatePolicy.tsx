@@ -1,11 +1,8 @@
 import { Link } from "react-router-dom";
 
 const ErrorRatePolicy: React.FC = () => {
-    //const iFrameRef = useRef<HTMLIFrameElement>(null);
-
 
     const handleLoad = () => {
-        //const iFrame = iFrameRef.current;
         const iFrame = document.querySelector(".docHidden");
         const loading = document.querySelector(".loading");
         iFrame?.classList.remove("docHidden");
@@ -13,8 +10,6 @@ const ErrorRatePolicy: React.FC = () => {
         loading?.classList.remove("loading");
         loading?.classList.add("docHidden");
       }
-
-      
     
       return (
         <div className="mainContent">
