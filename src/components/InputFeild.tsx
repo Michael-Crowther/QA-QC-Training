@@ -22,27 +22,127 @@ type SearchFilter = {
 };
 
 const searchFilter: SearchFilter = {
+
+  //SLA / GENERAL
   "SLA": "/general",
   "General": "/general",
   "Turnaround Time": "/general",
   "Delivery Rules": "/general",
   "Training Notes": "/general",
-  "6 Hour Turnaround": "/general",
+  "Inconsistent CADs": "/general",
 
-
+  //SEND TO ENGINEERS
   "Send to Engineers": "/sendToEngineers",
+  "2x4 Rafters": "/sendToEngineers",
+  "Detached Structures": "/sendToEngineers",
+  "Metal Framed Structures": "/sendToEngineers",
+  "Steel Framed Structures": "/sendToEngineers",
+  "Pergolas": "/sendToEngineers",
+  "Patios": "/sendToEngineers",
+  "Saggy Roofs": "/sendToEngineers",
+  "Old Roofs": "/sendToEngineers",
+  "Ponding": "/sendToEngineers",
+  "Charlton, MA": "/sendToEngineers",
+  "Northborough, MA": "/sendToEngineers",
+  "Prince William County, VA": "/sendToEngineers",
+  "Calculations Not Passing": "/sendToEngineers",
+  "Electrical Queue": "/sendToEngineers",
+  "Greg Queue": "/sendToEngineers",
+  "EE Stamps": "/sendToEngineers",
+  "SE Review Process": "/sendToEngineers",
+
+
+  //CODES/WIND/SNOW
   "Codes": "/codesWindSnow",
   "Wind": "/codesWindSnow",
   "Snow": "/codesWindSnow",
+  "Exposure Categories": "/codesWindSnow",
+
+
+  //GRAOUND MOUNTS
   "Ground Mounts": "/groundMounts",
+  "C-pile": "/groundMounts",
+  "Concrete Footing": "/groundMounts",
+  "Auger Screw": "/groundMounts",
+  "Ground Screw": "/groundMounts",
+  "Risk Category 1": "/groundMounts",
+  "Max E/W Spacing": "/groundMounts",
+  "Max N/S Spacing": "/groundMounts",
+  "Footing Sizes": "/groundMounts",
+
+
+  //ERROR RATE POLICY
   "Error Rate Policy": "/errorRatePolicy",
+  "Pay Rates": "/errorRatePolicy",
+  "Senior Account Manager": "/errorRatePolicy",
+  "Junior Account Manager": "/errorRatePolicy",
+  "QA/QC Round Timeline": "/errorRatePolicy",
+
+
+  //TEMPLATES
   "Templates": "/templates",
+  "Match Letter to CAD": "/templates",
+  "Last Names": "/templates",
+  "System Size": "/templates",
+  "Dead Load": "/templates",
+  "Section C of Letter": "/templates",
+  "Section D of Letter": "/templates",
+  "Revisions": "/templates",
+  "Post Installs": "/templates",
+  "COA Numbers": "/templates",
+  "Address": "/templates",
+
+
+  //AHJ DATABASE
   "AHJ Database": "/database",
+  "Upcodes": "/database",
+  "ATC Website": "/database",
+  "Oklahoma Projects": "/database",
+  "New Mexico Projects": "/database",
+  "Florida Projects": "/database",
+  "North Carolina Projects": "/database",
+  "Houston Projects": "/database",
+
+  //CALCULATIONS
   "Calculations": "/calculations",
+  "Point Loads": "/calculations",
+  "Pull Out Value": "/calculations",
+  "Deck Mount Calculations": "/calculations",
+
+
+  //FOLDERS
   "Folders": "/folders",
+  "Add EE Folder Label": "/folders",
+  "Add EL Folder Label": "/folders",
+  "COM Accounts": "/folders",
+  "Battery Folder Label": "/folders",
+  "Ground Mount Folder Label": "/folders",
+  "EL & ST Folder Label": "/folders",
+  "ST Only Folder Label": "/folders",
+  "EE Only Folder Label": "/folders",
+  "Load Calcs Folder Label": "/folders",
+  "WCE Folder Label": "/folders",
+  "Order of Labeling Folders": "/folders",
+  "Order of Labeling Revisions": "/folders",
+
+
+  //ROOF FRAMING
   "Roof Framing": "/roofFraming",
+  "Roof Slopes": "/roofFraming",
+  "Array Tilt": "/roofFraming",
+  "Roof Material": "/roofFraming",
+  "Assumed Language": "/roofFraming",
+  "Tile Roofing Dead Load": "/roofFraming",
+  "Dimensional Lumber": "/roofFraming",
+  "Rough Sawn Lumber": "/roofFraming",
+
+
+  //ATTACHMENTS / SCREWS
+  "Mount Spacing": "/attachmentsScrews",
+  "Ballast Projects": "/attachmentsScrews",
   "Attachment and Screw Type": "/attachmentsScrews",
-  
+  "150 mph or greater wind speed": "/attachmentsScrews",
+
 };
 
 
