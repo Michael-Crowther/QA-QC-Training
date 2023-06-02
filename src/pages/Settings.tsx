@@ -45,7 +45,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
     //Tests useStates
     const [showQuizzes, setShowQuizzes] = useState(false);
 
-    const BACKEND_URL = "https://guarded-wildwood-93633.herokuapp.com";
+    const BACKEND_URL = "https://qa-qc-training.herokuapp.com/";
 
     const navigate = useNavigate();
 
