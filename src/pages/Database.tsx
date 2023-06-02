@@ -23,7 +23,7 @@ const Database: React.FC = () => {
             <div className="googleDocEmbedContainer">
               <iframe
                 className="docHidden"
-                src="https://docs.google.com/document/d/e/2PACX-1vTLyikC4Gx70huYWpU8uK_wdHXt4mIiyH3BTnZFoyAyhnVwxVeMMFrFFRIqjmK4O2xvVPRQaz6kx-tD/pub?embedded=true"
+                src="https://docs.google.com/document/d/e/2PACX-1vS5_F8GG1i4AnwoMmJ-I2mc_D_ssLvwILo3pNt5qKx8j15SCztuEuKPYcp8ecUW7FYZFAXwgeP9vOxx/pub?embedded=true"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}

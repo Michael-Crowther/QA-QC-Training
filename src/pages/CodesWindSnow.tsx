@@ -23,7 +23,7 @@ const CodesWindSnow: React.FC = () => {
             <div className="googleDocEmbedContainer">
               <iframe
                 className="docHidden"
-                src="https://docs.google.com/document/d/e/2PACX-1vQU4Yh3sgznWn4HSs9pduFF4JcbGltKqHEagEaYunUo4CrDvCI72pzfr6XPzhFCjJtyTwqDhZFOD41u/pub?embedded=true"
+                src="https://docs.google.com/document/d/e/2PACX-1vSWH1hVv4ExXqSt5BwPw4Pdbaw4hwp_y8UYraANTHBAYffhm-DCs4RJkPr9sAz9hEDA1YygMqeaJ6XO/pub?embedded=true"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}

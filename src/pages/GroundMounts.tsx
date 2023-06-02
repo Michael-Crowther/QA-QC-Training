@@ -23,7 +23,7 @@ const GroundMounts: React.FC = () => {
             <div className="googleDocEmbedContainer">
               <iframe
                 className="docHidden"
-                src="https://docs.google.com/document/d/e/2PACX-1vQtljxzQ1slP0gp1wF6HNeuxU_otaWsCBg_iMCog_DyVsbNIowUaiwSqgqEQa0EdBG_HmPg-lG4_B6K/pub?embedded=true"
+                src="https://docs.google.com/document/d/e/2PACX-1vSZZBvJKhjVIecxM7gRSvHd1XmT7Nq-QpbJgDjR385dEkMx1fsWyEEWcXwWfHIpw2MOL66KfjL_4x6V/pub?embedded=true"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}

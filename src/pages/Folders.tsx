@@ -23,7 +23,7 @@ const Folders: React.FC = () => {
             <div className="googleDocEmbedContainer">
               <iframe
                 className="docHidden"
-                src="https://docs.google.com/document/d/e/2PACX-1vSo8VDGkfM7zvxPEM_-oAcQdd0UybNupCzf3Idyhyv0icU6IFN_mMx45w7hHWZF6QLYrSJJ7Lfw-Dkt/pub?embedded=true"
+                src="https://docs.google.com/document/d/e/2PACX-1vQOMFxDMy9wRJXSIlluqiAFKXkl9EBwdDzY6M2yIMxxbPdFQEK823FCmjser9Q243GgZw70EXjjsrjM/pub?embedded=true"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}

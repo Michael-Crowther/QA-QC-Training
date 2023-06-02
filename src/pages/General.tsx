@@ -23,7 +23,7 @@ const General: React.FC = () => {
         <div className="googleDocEmbedContainer">
           <iframe
             className="docHidden"
-            src="https://docs.google.com/document/d/e/2PACX-1vS05lc5uHMaRQWITWSFcusg_KMRf9jKEypsbjdA3ctflPNXmwz9Gz3zT7gQjb0Fm9tMQqes9ehSDxNG/pub?embedded=true"
+            src="https://docs.google.com/document/d/e/2PACX-1vRt3odKwero8uTggnezwCuquz8OLdTTv6BkolpgU0X6X2utT1N0JV8hN1DKMakxRftETRdJFrw9mE8k/pub?embedded=true"
             title="Google Doc Embed"
             allowFullScreen
             onLoad={handleLoad}

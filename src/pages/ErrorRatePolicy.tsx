@@ -22,7 +22,7 @@ const ErrorRatePolicy: React.FC = () => {
             <div className="googleDocEmbedContainer">
               <iframe
                 className="docHidden"
-                src="https://docs.google.com/document/d/e/2PACX-1vRsAQGxm4cfmJndek_huCHpqx0cDOHZretdYbqcV2G6lOE8Hrtb8w9dqGQlQCEKmaNSNOTYczeVfGDS/pub?embedded=true"
+                src="https://docs.google.com/document/d/e/2PACX-1vTH55zTuqjIX5j0iMYbzWfy1zV56WHomu_whD6KGA2_RJKxizAlJ9pOla3j0_dAFOJER1ikyckNJ4Fw/pub?embedded=true"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}

@@ -23,7 +23,7 @@ const RoofFraming: React.FC = () => {
             <div className="googleDocEmbedContainer">
               <iframe
                 className="docHidden"
-                src="https://docs.google.com/document/d/e/2PACX-1vSa1k6HGtenRnQUOocrQN01eVIEAaS-6YiKdbGtGn_-l_vOTVmsbqPal_3ocJR21MV2Vh3XZeUZAr6H/pub?embedded=true"
+                src="https://docs.google.com/document/d/e/2PACX-1vSGEfxS_I45B4LFiN8a0IYSS-xOqIieRD14yuowvSYZfeSqoC1qalC7SykAHM3zjNvWm9nC56kKaggL/pub?embedded=true"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}

@@ -23,7 +23,7 @@ const AttachmentsScrews: React.FC = () => {
             <div className="googleDocEmbedContainer">
               <iframe
                 className="docHidden"
-                src="https://docs.google.com/document/d/e/2PACX-1vRzTDjdC-OvPByUngmBn2ReorK3wzoS4JmENQWH38NTxyvRzZtAAYro1xeMdcaJ835tpoHre_BrrptE/pub?embedded=true"
+                src="https://docs.google.com/document/d/e/2PACX-1vQgJIUDqyPy34gUfsHJujtitVayNxgoyBDo7t2aaw_9q5qbkPQcTg4r7DklYFEPHy17ej4wYYtyD2LV/pub?embedded=true"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}

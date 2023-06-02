@@ -23,7 +23,7 @@ const Calculations: React.FC = () => {
             <div className="googleDocEmbedContainer">
               <iframe
                 className="docHidden"
-                src="https://docs.google.com/document/d/e/2PACX-1vRFUlGxiQXth-m6ehJUtOXHYskKQAEUYmppih5H4YCHol1H6w7RnSTw11HwX4jJmT80OPRQ98yoAkSW/pub?embedded=true"
+                src="https://docs.google.com/document/d/e/2PACX-1vRoUbycO7C_leXo_yGXAvcMkCJ7InXl5Qi_ktiA28_fF9HS0ehLrqwqsg_6HuaMD0mlAAhBbZwvEX-q/pub?embedded=true"
                 title="Google Doc Embed"
                 allowFullScreen
                 onLoad={handleLoad}
