@@ -331,7 +331,7 @@
 }
 .quiz-grid-container-settings{
     display: grid;
-    grid-template-columns: repeat(4, 3fr);
+    grid-template-columns: repeat(5, 3fr);
     grid-gap: 50px;  
     transition: 0.4s all;
     margin-top: 50px;
