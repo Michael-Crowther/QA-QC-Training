@@ -325,7 +325,7 @@ const Settings: React.FC<SettingsProps> = ({showLogin, handleLogout}) => {
                     Roof Framing</a>
                   <a className="grid-item-settings quizButton" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSfS6l9d2LJLMC_wtaImyS51JfUZ3GinBtvEFbCzWreL8OV-Eg/viewform">
                     Screws</a>
-                  <a className="grid-item-settings quizButton" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/17sr-soUFdr-IFpI0U7HFXouOT7v2eqXnIZ-0dF9DJaQ/edit?usp=drive_link">
+                  <a className="grid-item-settings quizButton" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLSf_ArKKDKPrPRKLjTlqsd4s2p_17ZZYySCQKFyyTllMnq8rPA/viewform">
                     Calculations</a>
                   <a className="grid-item-settings quizButton" target="_blank" rel="noopener noreferrer" href="https://docs.google.com/forms/d/e/1FAIpQLScnEonwbwlzgN9gX1thnCNv1UVZA0zSWQRCSgmaY6oemn_ABQ/viewform">
                     Random</a>
